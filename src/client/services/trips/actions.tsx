@@ -4,12 +4,18 @@ import { Trip, TripCreationRequest } from "../../types/trip/types";
 import api from "../actions";
 
 export const useTripsQuery = (opt = {}) => {
+  const { getToken } = useAuth();
+
   return useQuery<Trip[]>({
     queryKey: ["trips"],
-    queryFn: () =>
-      api.get("/api/trips").then((res) => {
-        return res.data;
-      }),
+    queryFn: async () =>
+      api
+        .get("/api/trips", {
+          headers: { Authorization: `Bearer ${await getToken()}` },
+        })
+        .then((res) => {
+          return res.data;
+        }),
     ...opt,
   });
 };
