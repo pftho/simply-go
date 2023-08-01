@@ -36,8 +36,6 @@ function AuthProviderWrapper({ children }: { children?: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
 
-  console.log("isLoggedInProvider", isLoggedIn);
-
   const storeToken = (token: string) => {
     localStorage.setItem("authToken", token);
   };
@@ -94,29 +92,28 @@ function AuthProviderWrapper({ children }: { children?: React.ReactNode }) {
     const storedToken = localStorage.getItem("authToken");
     if (storedToken) {
       setIsLoading(true);
-      await axios
-        .get(`${API_URL}/api/auth/verify`, {
+
+      try {
+        const verify = await axios.get(`${API_URL}/api/auth/verify`, {
           headers: { Authorization: `Bearer ${storedToken}` },
-        })
-        .then(async (response) => {
-          return await axios.get(
-            `${API_URL}/api/profile/user/${response.data._id}`,
-            {
-              headers: { Authorization: `Bearer ${storedToken}` },
-            }
-          );
-        })
-        .then((response) => {
-          const user = response.data;
-          setUser(user);
-          setIsLoggedIn(true);
-          setIsLoading(false);
-        })
-        .catch((err) => {
-          setIsLoading(false);
-          setIsLoggedIn(false);
-          setUser(null);
         });
+
+        const profile = await axios.get(
+          `${API_URL}/api/profile/user/${verify.data._id}`,
+          {
+            headers: { Authorization: `Bearer ${storedToken}` },
+          }
+        );
+
+        const user = profile.data;
+        setUser(user);
+        setIsLoggedIn(true);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        setIsLoggedIn(false);
+        setUser(null);
+      }
     } else {
       setIsLoggedIn(false);
       setIsLoading(false);
@@ -134,7 +131,7 @@ function AuthProviderWrapper({ children }: { children?: React.ReactNode }) {
 
   const logout = async () => {
     removeToken();
-    // authenticateUser();
+    updateUserProfile();
     navigate("/auth/login");
   };
 

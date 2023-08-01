@@ -15,8 +15,6 @@ const { Header, Content, Footer } = Layout;
 const ContentWrapper = ({ children }: { children: JSX.Element }) => {
   const { isLoggedIn, logout } = useAuth();
 
-  console.log("isLoggedInMenu", isLoggedIn);
-
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Header>
@@ -32,8 +30,12 @@ const ContentWrapper = ({ children }: { children: JSX.Element }) => {
               <Menu.Item key="userProfile" icon={<UserOutlined />}>
                 <Link to="/user/id">My profile</Link>
               </Menu.Item>
-              <Menu.Item key="logout" icon={<LogoutOutlined />}>
-                <Link to="/auth/login">Logout</Link>
+              <Menu.Item
+                key="logout"
+                onClick={logout}
+                icon={<LogoutOutlined />}
+              >
+                Logout
               </Menu.Item>
             </>
           ) : (
