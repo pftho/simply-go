@@ -1,11 +1,11 @@
+import { maelyssArnaud, paulineThomas } from "../user/mocks";
 import { Trip } from "./types";
-import { paulineThomas } from "../user/mocks";
 
 export const japan: Trip = {
-  id: "a6c48f28-9e15-4d0f-83b9-3260b8c41ef7",
+  _id: "612fd241b8d481234567890c",
   name: "Japan",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  itinerary: [],
+  activities: [],
   holidayTimeframe: "Spring",
   recommandedBudget: 4000,
   owner: paulineThomas,
@@ -14,10 +14,10 @@ export const japan: Trip = {
 };
 
 export const morocco: Trip = {
-  id: "76hdhshu-9e15-4d0f-83b9-76jhksh7777ç",
+  _id: "612fd241b8d481234567890d",
   name: "Morocco",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  itinerary: [],
+  activities: [],
   holidayTimeframe: "Spring",
   recommandedBudget: 2000,
   owner: paulineThomas,
@@ -26,10 +26,10 @@ export const morocco: Trip = {
 };
 
 export const iceland: Trip = {
-  id: "hddhjqicnf896554-9e15-4d0f-83b9-hxkugqkiyv655347",
+  _id: "612fd241b8d481234567890e",
   name: "Iceland",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  itinerary: [],
+  activities: [],
   holidayTimeframe: "Winter",
   recommandedBudget: 6000,
   owner: paulineThomas,
@@ -38,34 +38,34 @@ export const iceland: Trip = {
 };
 
 export const perpignan: Trip = {
-  id: "nlkuhqsdbqdkjyg756jkgdsu-9e15-4d0f-83b9-qsdjhq75kqde",
+  _id: "612fd241b8d481234567890f",
   name: "Perpignan",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  itinerary: [],
+  activities: [],
   holidayTimeframe: "Summer",
   recommandedBudget: 1000,
-  owner: paulineThomas,
+  owner: maelyssArnaud,
   imageUrl:
     "https://images.unsplash.com/photo-1635417709354-fcf07dadd917?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
 };
 
 export const ireland: Trip = {
-  id: "s:kfjhklh-9e15-4d0f-83b9-qsdfffqsse67755",
+  _id: "612fd241b8d4812345678910",
   name: "Ireland",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  itinerary: [],
+  activities: [],
   holidayTimeframe: "Winter",
   recommandedBudget: 1500,
-  owner: paulineThomas,
+  owner: maelyssArnaud,
   imageUrl:
     "https://images.unsplash.com/photo-1509384658642-3f88b1291b3d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80",
 };
 
 export const australia: Trip = {
-  id: "skfhioqyfjbP-9e15-4d0f-83b9-kqzhdgiluhsdjblq",
+  _id: "612fd241b8d4812345678911",
   name: "Australia",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  itinerary: [],
+  activities: [],
   holidayTimeframe: "Winter",
   recommandedBudget: 5000,
   owner: paulineThomas,
@@ -74,13 +74,23 @@ export const australia: Trip = {
 };
 
 export const bali: Trip = {
-  id: "qmsdpoidpoiandiuhq-9e15-4d0f-83b9-kqzhdgiluhsdjblq",
+  _id: "612fd241b8d4812345678912",
   name: "Bali",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  itinerary: [],
+  activities: [],
   holidayTimeframe: "Spring",
   recommandedBudget: 5000,
   owner: paulineThomas,
   imageUrl:
     "https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
 };
+
+export const trips: Trip[] = [
+  japan,
+  morocco,
+  iceland,
+  perpignan,
+  ireland,
+  australia,
+  bali,
+];

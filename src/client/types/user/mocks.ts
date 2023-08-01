@@ -1,9 +1,20 @@
-import { japan } from "../trip/mocks";
+import { User } from "./types";
+import mongoose from "mongoose";
 
-export const paulineThomas = {
-  id: "jhsgdjgy-9e15-kqjshd-87jh-hjshjhsdjhqgd",
+export const paulineThomas: User = {
+  _id: "612fd241b8d481234567890a",
   username: "Pauline Thomas",
   email: "pauline.thomas@travel.co",
   password: "ksjhfksjhkFs1hurkguh",
   trips: [],
 };
+
+export const maelyssArnaud: User = {
+  _id: "612fd241b8d481234567890b",
+  username: "Maelyss Arnaud",
+  email: "maelyss.arnaud@travel.co",
+  password: "ksjhfksjhkFs1hurkguh",
+  trips: [],
+};
+
+export const users: User[] = [paulineThomas, maelyssArnaud];

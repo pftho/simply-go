@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "nodemon src/server/main.ts -w src/server",
     "start": "NODE_ENV=production ts-node src/server/main.ts",
-    "build": "vite build"
+    "build": "vite build",
+    "seed": "ts-node src/server/seeder/trips.seeds.ts && ts-node src/server/seeder/users.seeds.ts"
   },
   "dependencies": {
     "@ant-design/icons": "^5.1.4",

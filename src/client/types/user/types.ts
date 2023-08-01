@@ -1,5 +1,4 @@
 import { Trip } from "../trip/types";
-
 export interface User {
   _id: string;
   username: string;
