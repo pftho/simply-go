@@ -36,6 +36,8 @@ function AuthProviderWrapper({ children }: { children?: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
 
+  console.log("isLoggedInProvider", isLoggedIn);
+
   const storeToken = (token: string) => {
     localStorage.setItem("authToken", token);
   };

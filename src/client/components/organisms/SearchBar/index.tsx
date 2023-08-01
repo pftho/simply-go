@@ -12,8 +12,6 @@ const SearchBar = ({ trips }: { trips: Trip[] }) => {
   const [selectedBudget, setSelectedBudget] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
 
-  console.log(budgetOptions(trips));
-
   const handleLocationChange = (selectedLocation: string) => {
     setSelectedLocation(selectedLocation);
   };
