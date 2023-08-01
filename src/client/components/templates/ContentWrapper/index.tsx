@@ -6,14 +6,18 @@ import {
   UserAddOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu } from "antd";
-import { Link, Outlet } from "react-router-dom";
+import { Layout, Menu, Spin } from "antd";
+import { Link } from "react-router-dom";
 import { useAuth } from "../../../context/auth.context";
 
 const { Header, Content, Footer } = Layout;
 
 const ContentWrapper = ({ children }: { children: JSX.Element }) => {
-  const { isLoggedIn, logout } = useAuth();
+  const { isLoggedIn, user, logout } = useAuth();
+
+  if (!user) {
+    return <Spin />;
+  }
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -28,7 +32,7 @@ const ContentWrapper = ({ children }: { children: JSX.Element }) => {
                 <Link to="/trips/create">Plan a trip</Link>
               </Menu.Item>
               <Menu.Item key="userProfile" icon={<UserOutlined />}>
-                <Link to="/user/id">My profile</Link>
+                <Link to={`/user/${user._id}`}>My profile</Link>
               </Menu.Item>
               <Menu.Item
                 key="logout"
