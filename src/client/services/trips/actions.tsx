@@ -3,8 +3,8 @@ import { useAuth } from "../../context/auth.context";
 import { Trip, TripCreationRequest } from "../../types/trip/types";
 import api from "../actions";
 
-export const useTripsQuery = (id?: string, opt = {}) => {
-  return useQuery<Trip>({
+export const useTripsQuery = (opt = {}) => {
+  return useQuery<Trip[]>({
     queryKey: ["trips"],
     queryFn: () =>
       api.get("/api/trips").then((res) => {

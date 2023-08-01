@@ -2,7 +2,7 @@ import { Activity } from "../activity/types";
 import { User } from "../user/types";
 
 export interface Trip {
-  id: string;
+  _id: string;
   name: string;
   description?: string;
   activities?: Activity[];

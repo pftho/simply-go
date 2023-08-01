@@ -1,9 +1,9 @@
-.tripListContainer {
-  padding: 15px;
+.searchBarAndListContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.searchBarContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.tripListContainer {
+  padding: 15px;
 }
