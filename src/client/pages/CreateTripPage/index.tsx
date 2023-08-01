@@ -1,5 +1,6 @@
 import CoverImage from "../../components/organisms/CoverImage";
 import CreateTripForm from "./Form";
+import "./styles.css";
 
 function CreateTripPage() {
   const imageUrl =
@@ -8,7 +9,7 @@ function CreateTripPage() {
   return (
     <>
       <CoverImage imageUrl={imageUrl} title={"Plan your next adventure"} />
-      <div className="searchBarContainer">
+      <div className="createTripFormContainer">
         <CreateTripForm />
       </div>
     </>
