@@ -1,13 +1,18 @@
 .menu {
   height: 100%;
-  border: 0;
+  border-right: 0;
 }
 
 .sider {
   background: "#fff";
 }
 
-.sectionTitle {
-  font-size: 24px;
-  font-weight: bold;
+.contentTripDetailsContainer {
+  margin: 24px 16px 0;
+}
+
+.contentTripDetailsDiv {
+  padding: 24px;
+  background-color: #fff;
+  min-height: 360px;
 }
