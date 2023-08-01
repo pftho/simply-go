@@ -7,7 +7,7 @@ interface Option {
 
 export const locationOptions = (trips: Trip[]) => {
   const locationWithDuplicates = trips.map((trip) => ({
-    value: trip.id,
+    value: trip._id,
     label: trip.name,
   }));
 
@@ -28,7 +28,7 @@ export const locationOptions = (trips: Trip[]) => {
 
 export const budgetOptions = (trips: Trip[]) => {
   const budgetsWithDuplicates: Option[] = trips.map((trip) => ({
-    value: trip.id,
+    value: trip._id,
     label: `${trip.recommandedBudget}`,
   }));
 
