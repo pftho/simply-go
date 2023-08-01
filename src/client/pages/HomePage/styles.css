@@ -1,0 +1,9 @@
+.tripListContainer {
+  padding: 15px;
+}
+
+.searchBarContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

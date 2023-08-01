@@ -1,0 +1,9 @@
+.coverImage {
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

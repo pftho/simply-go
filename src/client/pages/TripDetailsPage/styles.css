@@ -1,0 +1,13 @@
+.menu {
+  height: 100%;
+  border: 0;
+}
+
+.sider {
+  background: "#fff";
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: bold;
+}
