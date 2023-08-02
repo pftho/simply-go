@@ -7,6 +7,9 @@ import HomePage from "./pages/HomePage";
 import TripDetailsPage from "./pages/TripDetailsPage";
 import CreateTripPage from "./pages/CreateTripPage";
 import ProfilePage from "./pages/ProflePage";
+import IsPrivate from "./components/organisms/IsPrivate";
+import NotFound from "./pages/NotFoundPage";
+import ErrorPage from "./pages/ErrorPage";
 
 function Router() {
   const renderContentWrapper = (pageComponent: JSX.Element) => (
@@ -16,6 +19,8 @@ function Router() {
   return (
     <div style={{ flex: 1 }}>
       <Routes>
+        <Route path={"/page-not-found"} element={<NotFound />} />
+        <Route path={"*"} element={<ErrorPage />} />
         <Route path="/" element={renderContentWrapper(<LandingPage />)} />
         <Route
           path="auth/login"
@@ -25,22 +30,55 @@ function Router() {
           path="auth/register"
           element={renderContentWrapper(<RegisterPage />)}
         />
-        <Route path="/trips" element={renderContentWrapper(<HomePage />)} />
+        <Route
+          path="/trips"
+          element={
+            <IsPrivate>
+              <ContentWrapper>
+                <HomePage />
+              </ContentWrapper>
+            </IsPrivate>
+          }
+        />
         <Route
           path="/trips/:id"
-          element={renderContentWrapper(<TripDetailsPage />)}
+          element={
+            <IsPrivate>
+              <ContentWrapper>
+                <TripDetailsPage />
+              </ContentWrapper>
+            </IsPrivate>
+          }
         />
         <Route
           path="/trips/create"
-          element={renderContentWrapper(<CreateTripPage />)}
+          element={
+            <IsPrivate>
+              <ContentWrapper>
+                <CreateTripPage />
+              </ContentWrapper>
+            </IsPrivate>
+          }
         />
         <Route
           path="/user/:id"
-          element={renderContentWrapper(<ProfilePage />)}
+          element={
+            <IsPrivate>
+              <ContentWrapper>
+                <ProfilePage />
+              </ContentWrapper>
+            </IsPrivate>
+          }
         />
         <Route
           path="/user/:id/edit"
-          element={renderContentWrapper(<ProfilePage />)}
+          element={
+            <IsPrivate>
+              <ContentWrapper>
+                <ProfilePage />
+              </ContentWrapper>
+            </IsPrivate>
+          }
         />
       </Routes>
     </div>
