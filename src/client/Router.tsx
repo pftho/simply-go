@@ -1,15 +1,15 @@
 import { Route, Routes } from "react-router-dom";
+import IsPrivate from "./components/organisms/IsPrivate";
 import ContentWrapper from "./components/templates/ContentWrapper";
-import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/Auth/Login";
 import RegisterPage from "./pages/Auth/Register";
-import HomePage from "./pages/HomePage";
-import TripDetailsPage from "./pages/TripDetailsPage";
 import CreateTripPage from "./pages/CreateTripPage";
-import ProfilePage from "./pages/ProflePage";
-import IsPrivate from "./components/organisms/IsPrivate";
-import NotFound from "./pages/NotFoundPage";
 import ErrorPage from "./pages/ErrorPage";
+import HomePage from "./pages/HomePage";
+import NotFound from "./pages/NotFoundPage";
+import ProfilePage from "./pages/ProflePage";
+import TripDetailsPage from "./pages/TripDetailsPage";
+import LandingPage from "./pages/LandingPage";
 
 function Router() {
   const renderContentWrapper = (pageComponent: JSX.Element) => (

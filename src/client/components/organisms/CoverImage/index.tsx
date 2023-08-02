@@ -1,7 +1,15 @@
 import { Typography } from "antd";
 import "./styles.css";
 
-function CoverImage({ imageUrl, title }: { imageUrl: string; title: string }) {
+function CoverImage({
+  imageUrl,
+  title,
+  tagline,
+}: {
+  imageUrl: string;
+  title: string;
+  tagline?: string;
+}) {
   const { Title } = Typography;
 
   return (
@@ -11,7 +19,10 @@ function CoverImage({ imageUrl, title }: { imageUrl: string; title: string }) {
         backgroundImage: `url(${imageUrl})`,
       }}
     >
-      <Title> {title}</Title>
+      <div className="coverText">
+        <Title> {title}</Title>
+        {tagline && <Title level={2}>{tagline} </Title>}
+      </div>
     </div>
   );
 }

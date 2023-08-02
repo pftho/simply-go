@@ -17,6 +17,7 @@ import { Activity } from "../../../types/activity/types";
 import { HolidayTimeframeEnum } from "../../../types/trip/enums";
 import "./styles.css";
 import FormActivityRow from "../FormItineraryRow";
+import { useNavigate } from "react-router-dom";
 
 const CreateTripForm = () => {
   const { Option } = Select;
@@ -25,6 +26,7 @@ const CreateTripForm = () => {
   const createTrip = useCreateSurveyMutation();
   const { user } = useAuth();
   const [storedImageUrl, setStoredImageUrl] = useState("");
+  const navigate = useNavigate();
 
   if (!user) {
     return <Spin />;
@@ -58,6 +60,7 @@ const CreateTripForm = () => {
           queryClient.invalidateQueries({
             queryKey: ["trips"],
           });
+          navigate("/trips");
         },
       }
     );
