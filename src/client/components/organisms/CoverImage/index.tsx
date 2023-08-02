@@ -21,7 +21,7 @@ function CoverImage({
     >
       <div className="coverText">
         <Title> {title}</Title>
-        {tagline && <Title level={2}>{tagline} </Title>}
+        {tagline && <Title level={3}>{tagline} </Title>}
       </div>
     </div>
   );
