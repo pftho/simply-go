@@ -14,7 +14,7 @@ const activitySchema = new Schema(
       enum: [
         "Relaxing",
         "Sport",
-        "Culture",
+        "Culture & Sightseeing",
         "Wildlife & Nature",
         "Food & Gastronomy",
         "Art & Creativity",
@@ -25,7 +25,7 @@ const activitySchema = new Schema(
       required: true,
     },
 
-    tripId: { type: Schema.Types.ObjectId, ref: "Trip" },
+    trip: { type: Schema.Types.ObjectId, ref: "Trip" },
   },
   {
     timestamps: true,

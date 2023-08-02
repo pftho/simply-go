@@ -1,33 +1,32 @@
 import { Card, Typography } from "antd";
+import "./styles.css";
 
-const { Meta } = Card;
 const { Title } = Typography;
 
 const ActivityCard = ({
   name,
   description,
-  location,
-  day,
-  budget,
-  imageUrl,
+  type,
 }: {
   name: string;
   description: string;
-  location: string;
-  day: string;
-  budget: number;
-  imageUrl?: string;
+  type: string;
 }) => {
   return (
-    <Card
-      style={{ width: 300 }}
-      cover={imageUrl ? <img alt={name} src={imageUrl} /> : null}
-    >
-      <Meta title={name} description={description} />
-      <Title level={2}>Description:</Title>
-      <Typography>{location}</Typography>
-      <Title level={2}>Type:</Title>
-      <Typography>{day}</Typography>
+    <Card className="activityCard">
+      <div className="activityContent">
+        <Title level={4}>{name}</Title>
+        <div className="titleDiv">
+          <Title level={5} className="titleMargin">
+            Type
+          </Title>
+          <Typography>{type}</Typography>
+        </div>
+        <Title level={5} className="titleMargin">
+          Description
+        </Title>
+        <Typography.Paragraph>{description}</Typography.Paragraph>
+      </div>
     </Card>
   );
 };

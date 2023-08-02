@@ -1,3 +1,19 @@
-.tripCard {
-  width: 240px;
+.activityCard {
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.activityContent {
+  margin-bottom: 16px;
+}
+
+.titleDiv {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 8px;
+}
+
+.titleMargin {
+  margin-top: 16px;
 }

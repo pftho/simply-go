@@ -1,3 +1,4 @@
+import { activitiesBali } from "../activity/mocks";
 import { maelyssArnaud, paulineThomas } from "../user/mocks";
 import { Trip } from "./types";
 
@@ -77,7 +78,7 @@ export const bali: Trip = {
   _id: "612fd241b8d4812345678912",
   name: "Bali",
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-  activities: [],
+  activities: activitiesBali,
   holidayTimeframe: "Spring",
   recommandedBudget: 5000,
   owner: paulineThomas,

@@ -1,11 +1,9 @@
-import { User } from "../user/types";
+import { Trip } from "../trip/types";
 
 export interface Activity {
-  id: string;
+  _id: string;
   name: string;
   description: string;
-  location: string;
-  day: string;
-  budget: number;
-  imageUrl?: string;
+  type: string;
+  trip: Trip;
 }

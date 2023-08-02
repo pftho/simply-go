@@ -1,5 +1,4 @@
 import { User } from "./types";
-import mongoose from "mongoose";
 
 export const paulineThomas: User = {
   _id: "612fd241b8d481234567890a",
