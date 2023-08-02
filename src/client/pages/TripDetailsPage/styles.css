@@ -1,18 +1,12 @@
-.achor {
+.siderContainer {
+  padding: 16px;
+  background-color: #ffffff;
+}
+
+.anchor {
+  background-color: #ffffff;
   height: 100%;
   border-right: 0;
-  background: "#fff";
-}
-
-.siderContainer {
-  background: "#fff";
-  padding: 16px;
-  height: 100%;
-}
-
-.sider {
-  height: 100%;
-  background: "#fff";
 }
 
 .contentTripDetailsContainer {

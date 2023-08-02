@@ -24,12 +24,7 @@ function TripDetailsPage() {
     <Layout style={{ minHeight: "100vh" }}>
       <div className="siderContainer">
         <Sider className="sider" width={200}>
-          <Anchor
-            style={{ backgroundColor: "#ffffff" }}
-            targetOffset={64}
-            affix
-            showInkInFixed
-          >
+          <Anchor targetOffset={64} affix showInkInFixed className="anchor">
             <Link href="#description" title="Description" />
             <Link href="#activities" title="Activities" />
             <Link href="#budget" title="Budget" />
