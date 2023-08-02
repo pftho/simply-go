@@ -1,5 +1,4 @@
 import { Anchor, Col, Layout, Row, Spin, Typography } from "antd";
-import { useState } from "react";
 import { useParams } from "react-router-dom";
 import ActivityCard from "../../components/organisms/ActivityCard";
 import CoverImage from "../../components/organisms/CoverImage";

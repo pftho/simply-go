@@ -8,6 +8,8 @@ import "./styles.css";
 import Router from "./Router";
 import ReactDOM from "react-dom";
 import { AuthProviderWrapper } from "./context/auth.context";
+import { ConfigProvider } from "antd";
+import GoogleFontLoader from "react-google-font-loader";
 
 function App() {
   return (
@@ -15,7 +17,21 @@ function App() {
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
           <AuthProviderWrapper>
-            <Router />
+            <GoogleFontLoader
+              fonts={[
+                {
+                  font: "Montserrat",
+                  weights: [400, 700],
+                },
+                {
+                  font: "Lato",
+                  weights: [400, 700],
+                },
+              ]}
+            />
+            <ConfigProvider>
+              <Router />
+            </ConfigProvider>
           </AuthProviderWrapper>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>

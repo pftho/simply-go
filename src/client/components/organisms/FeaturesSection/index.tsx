@@ -1,9 +1,9 @@
-import { Row, Col, Card, Typography } from "antd";
 import {
+  CarryOutOutlined,
   PlusOutlined,
   SearchOutlined,
-  CarryOutOutlined,
 } from "@ant-design/icons";
+import { Card, Col, Row, Typography } from "antd";
 import "./styles.css";
 
 const FeaturesSection = () => {
@@ -18,7 +18,7 @@ const FeaturesSection = () => {
         <Col xs={24} sm={12} md={8}>
           <Card
             className="featureCard"
-            title="Create Your Own Trips"
+            title="Create"
             cover={<PlusOutlined className="featureIcon" />}
           >
             <Typography>
@@ -30,7 +30,7 @@ const FeaturesSection = () => {
 
         <Col xs={24} sm={12} md={8}>
           <Card
-            title="Access Already Planned Trips"
+            title="Get inspired"
             className="featureCard"
             cover={<SearchOutlined className="featureIcon" />}
           >
@@ -43,7 +43,7 @@ const FeaturesSection = () => {
         <Col xs={24} sm={12} md={8}>
           <Card
             className="featureCard"
-            title="Easily Access Your Plan When Traveling"
+            title="Enjoy"
             cover={<CarryOutOutlined className="featureIcon" />}
           >
             <Typography>

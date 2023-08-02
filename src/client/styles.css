@@ -1,3 +1,12 @@
+:root {
+  --color-sky-blue: #3498db;
+  --color-golden-yellow: #f1c40f;
+  --color-emerald-green: #2ecc71;
+  --color-soft-coral: #f368e0;
+  --color-neutral-gray: #95a5a6;
+  --color-pure-white: #ffffff;
+}
+
 /* override browser default */
 html,
 body {

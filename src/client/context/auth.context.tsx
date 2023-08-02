@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import axios, { AxiosResponse } from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { User } from "../types/user/types";
 
 const API_URL = "http://localhost:3000";
@@ -152,4 +152,4 @@ const useAuth = () => {
   return useContext(AuthContext);
 };
 
-export { AuthProviderWrapper, AuthContext, useAuth };
+export { AuthContext, AuthProviderWrapper, useAuth };

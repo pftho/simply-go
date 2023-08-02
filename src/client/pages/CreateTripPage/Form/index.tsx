@@ -11,13 +11,13 @@ import {
   Typography,
 } from "antd";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/auth.context";
 import { useCreateSurveyMutation } from "../../../services/trips/actions";
 import { Activity } from "../../../types/activity/types";
 import { HolidayTimeframeEnum } from "../../../types/trip/enums";
-import "./styles.css";
 import FormActivityRow from "../FormItineraryRow";
-import { useNavigate } from "react-router-dom";
+import "./styles.css";
 
 const CreateTripForm = () => {
   const { Option } = Select;

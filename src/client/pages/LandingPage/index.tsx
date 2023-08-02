@@ -1,10 +1,10 @@
 import { Col, Row, Spin, Typography } from "antd";
 import CoverImage from "../../components/organisms/CoverImage";
+import FeaturesSection from "../../components/organisms/FeaturesSection";
 import TripCard from "../../components/organisms/TripCard";
 import { useTripsQuery } from "../../services/trips/actions";
 import { Trip } from "../../types/trip/types";
 import "./styles.css";
-import FeaturesSection from "../../components/organisms/FeaturesSection";
 
 function LandingPage() {
   const { data: trips, isLoading } = useTripsQuery();

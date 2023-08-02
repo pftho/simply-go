@@ -4,12 +4,12 @@ import ContentWrapper from "./components/templates/ContentWrapper";
 import LoginPage from "./pages/Auth/Login";
 import RegisterPage from "./pages/Auth/Register";
 import CreateTripPage from "./pages/CreateTripPage";
-import ErrorPage from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
-import NotFound from "./pages/NotFoundPage";
 import ProfilePage from "./pages/ProflePage";
 import TripDetailsPage from "./pages/TripDetailsPage";
 import LandingPage from "./pages/LandingPage";
+import NotFoundPage from "./pages/ResultPages/NotFoundPage";
+import ErrorPage from "./pages/ResultPages/ErrorPage";
 
 function Router() {
   const renderContentWrapper = (pageComponent: JSX.Element) => (
@@ -19,7 +19,7 @@ function Router() {
   return (
     <div style={{ flex: 1 }}>
       <Routes>
-        <Route path={"/page-not-found"} element={<NotFound />} />
+        <Route path={"/page-not-found"} element={<NotFoundPage />} />
         <Route path={"*"} element={<ErrorPage />} />
         <Route path="/" element={renderContentWrapper(<LandingPage />)} />
         <Route

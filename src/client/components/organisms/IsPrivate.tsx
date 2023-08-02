@@ -1,6 +1,6 @@
+import { Spin } from "antd";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../../context/auth.context";
-import { Spin } from "antd";
 
 function IsPrivate({ children }: { children: JSX.Element }) {
   const { isLoggedIn, isLoading } = useAuth();

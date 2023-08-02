@@ -6,7 +6,7 @@ import {
   UserAddOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, Spin } from "antd";
+import { Layout, Menu } from "antd";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../context/auth.context";
 
