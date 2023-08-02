@@ -1,20 +1,14 @@
-import {
-  EuroCircleOutlined,
-  EyeOutlined,
-  LaptopOutlined,
-  NotificationOutlined,
-  UserOutlined,
-  ZoomInOutlined,
-} from "@ant-design/icons";
-import { Col, Layout, Menu, Row, Spin, Typography } from "antd";
+import { Anchor, Col, Layout, Row, Spin, Typography } from "antd";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import ActivityCard from "../../components/organisms/ActivityCard";
 import CoverImage from "../../components/organisms/CoverImage";
 import { useTripQuery } from "../../services/trips/actions";
 import "./styles.css";
-import { useParams } from "react-router-dom";
-import ActivityCard from "../../components/organisms/ActivityCard";
 
 const { Sider, Content } = Layout;
 const { Title } = Typography;
+const { Link } = Anchor;
 
 function TripDetailsPage() {
   const { id } = useParams();
@@ -28,39 +22,40 @@ function TripDetailsPage() {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Sider width={200} className="sider">
-        <Menu
-          mode="inline"
-          defaultSelectedKeys={["Description"]}
-          className="menu"
-        >
-          <Menu.Item key="description" icon={<ZoomInOutlined />}>
-            Description
-          </Menu.Item>
-          <Menu.Item key="activities" icon={<EyeOutlined />}>
-            Activities
-          </Menu.Item>
-          <Menu.Item key="Budget" icon={<EuroCircleOutlined />}>
-            Budget
-          </Menu.Item>
-        </Menu>
-      </Sider>
+      <div className="siderContainer">
+        <Sider className="sider" width={200}>
+          <Anchor
+            style={{ backgroundColor: "#ffffff" }}
+            targetOffset={64}
+            affix
+            showInkInFixed
+          >
+            <Link href="#description" title="Description" />
+            <Link href="#activities" title="Activities" />
+            <Link href="#budget" title="Budget" />
+          </Anchor>
+        </Sider>
+      </div>
       <Layout>
         <CoverImage imageUrl={imageUrl} title={`Explore ${trip?.name}`} />
         <Content className="contentTripDetailsContainer">
           <div className="contentTripDetailsDiv">
             <Row gutter={[16, 16]}>
               <Col span={24}>
-                <Title level={2}> Description</Title>
+                <Title id="description" level={2}>
+                  Description
+                </Title>
                 {trip?.description}
               </Col>
             </Row>
             <Row gutter={[16, 16]}>
               <Col span={24}>
-                <Title level={2}>Activities</Title>
+                <Title id="activities" level={2}>
+                  Activities
+                </Title>
                 {trip?.activities?.length ? (
                   trip.activities.map((tripActivity) => (
-                    <ActivityCard {...tripActivity} />
+                    <ActivityCard key={tripActivity._id} {...tripActivity} />
                   ))
                 ) : (
                   <>
@@ -71,11 +66,12 @@ function TripDetailsPage() {
             </Row>
             <Row gutter={[16, 16]}>
               <Col span={24}>
-                <Title level={2}>Budget</Title>
+                <Title id="budget" level={2}>
+                  Budget
+                </Title>
                 <Typography>{trip?.recommandedBudget} Euros</Typography>
               </Col>
             </Row>
-            {/* Add more sections as needed */}
           </div>
         </Content>
       </Layout>

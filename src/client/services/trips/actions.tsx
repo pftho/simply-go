@@ -22,7 +22,6 @@ export const useTripsQuery = (opt = {}) => {
 
 export const useTripQuery = (id?: string, opt = {}) => {
   const { getToken } = useAuth();
-
   return useQuery<Trip>({
     queryKey: ["trip", id],
     queryFn: async () =>
