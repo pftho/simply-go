@@ -78,16 +78,6 @@ router.post("/", isAuthenticated, async (req, res) => {
     imageUrl,
   } = req.body;
 
-  console.log(
-    name,
-    description,
-    holidayTimeframe,
-    activities,
-    recommandedBudget,
-    ownerId,
-    imageUrl
-  );
-
   try {
     const newTrip = await Trip.create({
       name,
