@@ -4,10 +4,9 @@ import { Trip, TripCreationRequest } from "../../types/trip/types";
 import api from "../actions";
 
 export const useTripsQuery = (opt = {}) => {
-  const { getToken } = useAuth();
-
+  const { getToken, user } = useAuth();
   return useQuery<Trip[]>({
-    queryKey: ["trips"],
+    queryKey: [user?._id || "unlogged", "trips"],
     queryFn: async () => {
       const token = await getToken();
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
@@ -21,9 +20,9 @@ export const useTripsQuery = (opt = {}) => {
 };
 
 export const useTripQuery = (id?: string, opt = {}) => {
-  const { getToken } = useAuth();
+  const { getToken, user } = useAuth();
   return useQuery<Trip>({
-    queryKey: ["trip", id],
+    queryKey: [user?._id || "unlogged", "trip", id],
     queryFn: async () =>
       api
         .get(`/api/trips/${id}`, {

@@ -1,5 +1,5 @@
 import { Typography } from "antd";
-import "./styles.css";
+import "./styles.scss";
 
 function CoverImage({
   imageUrl,
@@ -20,7 +20,7 @@ function CoverImage({
       }}
     >
       <div className="coverText">
-        <Title> {title}</Title>
+        <Title className="headerLevel1">{title}</Title>
         {tagline && <Title level={3}>{tagline} </Title>}
       </div>
     </div>

@@ -4,7 +4,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import queryClient from "./reactQuery";
 import "./reset.css";
-import "./styles.css";
+import "./styles.scss";
 import Router from "./Router";
 import ReactDOM from "react-dom";
 import { AuthProviderWrapper } from "./context/auth.context";
@@ -18,18 +18,16 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <AuthProviderWrapper>
             <GoogleFontLoader
-              fonts={[
-                {
-                  font: "Montserrat",
-                  weights: [400, 700],
+              fonts={[{ font: "Lato" }, { font: "Pacifico" }]}
+            />{" "}
+            <ConfigProvider
+              theme={{
+                token: {
+                  colorPrimary: "#004C8C",
+                  fontFamily: "Lato",
                 },
-                {
-                  font: "Lato",
-                  weights: [400, 700],
-                },
-              ]}
-            />
-            <ConfigProvider>
+              }}
+            >
               <Router />
             </ConfigProvider>
           </AuthProviderWrapper>

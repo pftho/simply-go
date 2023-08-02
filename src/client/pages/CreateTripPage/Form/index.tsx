@@ -58,7 +58,7 @@ const CreateTripForm = () => {
       {
         onSuccess: () => {
           queryClient.invalidateQueries({
-            queryKey: ["trips"],
+            queryKey: [user?._id || "unlogged", "trips"],
           });
           navigate("/trips");
         },

@@ -1,0 +1,35 @@
+:root {
+  --color-ocean-blue: #007bff;
+  --color-sandy-beige: #f5deb3;
+  --color-forest-green: #228b22;
+  --color-sunset-orange: #ffa500;
+  --color-earthy-brown: #8b4513;
+  --color-coral: #ff6f61;
+  --color-cloud-white: #ffffff;
+  --color-mountain-gray: #808080;
+  --color-golden-yellow: #ffd700;
+  --color-emerald-green: #50c878;
+  --font-title: "Raleway", sans-serif;
+  --font-text: "Roboto", sans-serif;
+}
+
+/* override browser default */
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* use viewport-relative units to cover page fully */
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+}
+
+#root {
+  .headerLevel1 {
+    font-family: "Pacifico";
+    color: var(--color-cloud-white);
+  }
+}
