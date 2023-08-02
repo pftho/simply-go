@@ -42,13 +42,7 @@ function Router() {
         />
         <Route
           path="/trips/:id"
-          element={
-            <IsPrivate>
-              <ContentWrapper>
-                <TripDetailsPage />
-              </ContentWrapper>
-            </IsPrivate>
-          }
+          element={renderContentWrapper(<TripDetailsPage />)}
         />
         <Route
           path="/trips/create"
