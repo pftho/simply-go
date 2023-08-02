@@ -8,14 +8,14 @@ export const useTripsQuery = (opt = {}) => {
 
   return useQuery<Trip[]>({
     queryKey: ["trips"],
-    queryFn: async () =>
-      api
-        .get("/api/trips", {
-          headers: { Authorization: `Bearer ${await getToken()}` },
-        })
-        .then((res) => {
-          return res.data;
-        }),
+    queryFn: async () => {
+      const token = await getToken();
+      const headers = token ? { Authorization: `Bearer ${token}` } : {};
+
+      return api.get("/api/trips", { headers }).then((res) => {
+        return res.data;
+      });
+    },
     ...opt,
   });
 };

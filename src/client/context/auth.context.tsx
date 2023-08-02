@@ -42,11 +42,7 @@ function AuthProviderWrapper({ children }: { children?: React.ReactNode }) {
 
   const getToken = async () => {
     const tokenValue = localStorage.getItem("authToken");
-    if (tokenValue) {
-      return Promise.resolve(tokenValue);
-    }
-
-    throw new Error("No token found");
+    return tokenValue || null;
   };
 
   const login = async (email: string, password: string) => {
