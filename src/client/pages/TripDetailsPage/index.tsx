@@ -23,6 +23,7 @@ function TripDetailsPage() {
   if (isLoading) {
     return <Spin />;
   }
+  console.log(trip?._id);
 
   return (
     <>
@@ -30,7 +31,12 @@ function TripDetailsPage() {
 
       <Layout className="layout">
         <div className="siderContainer">
-          <TripDetailsPageSider isUserTripOwner={isUserTripOwner} />
+          {trip && (
+            <TripDetailsPageSider
+              tripId={trip?._id}
+              isUserTripOwner={isUserTripOwner}
+            />
+          )}
         </div>
         <Layout>
           <Content className="contentTripDetailsContainer">

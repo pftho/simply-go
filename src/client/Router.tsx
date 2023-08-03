@@ -10,6 +10,7 @@ import TripDetailsPage from "./pages/TripDetailsPage";
 import LandingPage from "./pages/LandingPage";
 import NotFoundPage from "./pages/ResultPages/NotFoundPage";
 import ErrorPage from "./pages/ResultPages/ErrorPage";
+import EditTripPage from "./pages/EditTripPage";
 
 function Router() {
   const renderContentWrapper = (pageComponent: JSX.Element) => (
@@ -44,6 +45,7 @@ function Router() {
           path="/trips/:id"
           element={renderContentWrapper(<TripDetailsPage />)}
         />
+
         <Route
           path="/trips/create"
           element={
@@ -54,6 +56,18 @@ function Router() {
             </IsPrivate>
           }
         />
+
+        <Route
+          path="/trips/edit/:id"
+          element={
+            <IsPrivate>
+              <ContentWrapper>
+                <EditTripPage />
+              </ContentWrapper>
+            </IsPrivate>
+          }
+        />
+
         <Route
           path="/user/:id"
           element={
