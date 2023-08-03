@@ -1,14 +1,14 @@
-import { Anchor, Button, Col, Layout, Row, Spin, Typography } from "antd";
+import { Col, Layout, Row, Spin, Typography } from "antd";
 import { useParams } from "react-router-dom";
 import ActivityCard from "../../components/organisms/ActivityCard";
 import CoverImage from "../../components/organisms/CoverImage";
+import { useAuth } from "../../context/auth.context";
 import { useTripQuery } from "../../services/trips/actions";
 import "./styles.scss";
-import { useAuth } from "../../context/auth.context";
+import TripDetailsPageSider from "./TripDetailsPageSider";
 
-const { Sider, Content } = Layout;
+const { Content } = Layout;
 const { Title } = Typography;
-const { Link } = Anchor;
 
 function TripDetailsPage() {
   const { id } = useParams();
@@ -30,18 +30,7 @@ function TripDetailsPage() {
 
       <Layout className="layout">
         <div className="siderContainer">
-          <Sider className="sider" width={200}>
-            {isUserTripOwner && (
-              <Button type="primary" className="editBtn">
-                Edit
-              </Button>
-            )}
-            <Anchor targetOffset={64} affix showInkInFixed className="anchor">
-              <Link href="#description" title="Description" />
-              <Link href="#activities" title="Activities" />
-              <Link href="#budget" title="Budget" />
-            </Anchor>
-          </Sider>
+          <TripDetailsPageSider isUserTripOwner={isUserTripOwner} />
         </div>
         <Layout>
           <Content className="contentTripDetailsContainer">
