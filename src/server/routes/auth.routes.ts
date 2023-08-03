@@ -1,12 +1,12 @@
-import express, { Request } from "express";
 import bcrypt from "bcryptjs";
+import express from "express";
 import jwt from "jsonwebtoken";
 
-import User from "../models/User.model";
 import {
-  isAuthenticated,
   AuthenticatedRequest,
+  isAuthenticated,
 } from "../middleware/jwt.middleware";
+import User from "../models/User.model";
 
 const router = express.Router();
 const saltRound = 10;
@@ -16,7 +16,7 @@ const saltRound = 10;
  * @summary post route to create a user
  * @responseBody 200 - <User>
  */
-router.post("/register", async (req, res) => {
+router.post("/register", async (req, res, next) => {
   try {
     const { username, email, password } = req.body;
     if (!username || !email || !password) {
@@ -74,7 +74,7 @@ router.post("/register", async (req, res) => {
       _id: newUser._id,
     });
   } catch (err) {
-    res.status(500).json({ errorMessage: "Internal Server Error" });
+    next(err);
   }
 });
 
@@ -84,7 +84,7 @@ router.post("/register", async (req, res) => {
  * @responseBody 200 - <User>
  */
 
-router.post("/login", async (req, res) => {
+router.post("/login", async (req, res, next) => {
   const { password, email } = req.body;
 
   if (!email || !password) {
@@ -124,7 +124,7 @@ router.post("/login", async (req, res) => {
       });
     }
   } catch (err) {
-    res.status(500).json({ message: "Internal Server Error" });
+    next(err);
   }
 });
 

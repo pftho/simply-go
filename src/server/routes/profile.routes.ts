@@ -13,7 +13,7 @@ const router = express.Router();
  * @responseBody 200 - <User>
  */
 
-router.get("/user/:userId", async (req, res) => {
+router.get("/user/:userId", async (req, res, next) => {
   const { userId } = req.params;
   if (!mongoose.Types.ObjectId.isValid(userId)) {
     res.status(400).json({ message: "Specified id is not valid" });
@@ -22,7 +22,7 @@ router.get("/user/:userId", async (req, res) => {
   try {
     res.json(await User.findById(userId));
   } catch (err) {
-    res.json(err);
+    next(err);
   }
 });
 
