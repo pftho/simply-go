@@ -72,3 +72,14 @@ export const useUpdateTripMutation = () => {
       .then((res) => res.data)
   );
 };
+
+export const useDeleteTripMutation = () => {
+  const { getToken } = useAuth();
+
+  return useMutation<void, Error, string>(async (tripId) => {
+    const token = await getToken();
+    await api.delete(`/api/trips/${tripId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  });
+};

@@ -14,7 +14,6 @@ function TripDetailsPage() {
   const { id } = useParams();
   const { data: trip, isLoading } = useTripQuery(id);
   const { user } = useAuth();
-  const isUserTripOwner = user?._id === trip?.owner._id;
 
   const imageUrl =
     trip?.imageUrl ||
@@ -30,12 +29,7 @@ function TripDetailsPage() {
 
       <Layout className="layout">
         <div className="siderContainer">
-          {trip && (
-            <TripDetailsPageSider
-              tripId={trip?._id}
-              isUserTripOwner={isUserTripOwner}
-            />
-          )}
+          {trip && user && <TripDetailsPageSider trip={trip} user={user} />}
         </div>
         <Layout>
           <Content className="contentTripDetailsContainer">

@@ -201,36 +201,38 @@ router.put("/:tripId", isAuthenticated, async (req, res, next) => {
   }
 });
 
-// /**
-//  * @delete
-//  * @summary delete a trip
-//  * @requestBody tripId: string
-//  * @responseBody 200 - <Trip>
-//  */
+/**
+ * @delete
+ * @summary delete a trip
+ * @requestBody tripId: string
+ * @responseBody 200 - <Trip>
+ */
 
-// router.delete("/:tripId", isAuthenticated, async (req, res) => {
-//   const { tripId } = req.params;
-//   const userId = req.payload._id;
+router.delete("/:tripId", isAuthenticated, async (req, res) => {
+  const { tripId } = req.params;
+  const userId = (req as AuthenticatedRequest).userAuth._id;
 
-//   if (!mongoose.Types.ObjectId.isValid(tripId)) {
-//     res.status(400).json({ message: "Specified id is not valid" });
-//     return;
-//   }
+  console.log(tripId);
 
-//   const isOwner = await isTripOwner(userId, tripId);
+  if (!mongoose.Types.ObjectId.isValid(tripId)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
 
-//   if (isOwner) {
-//     try {
-//       Trip.findByIdAndRemove(tripId);
-//       return res.json({
-//         message: `Ad with ${tripId} is removed successfully.`,
-//       });
-//     } catch (error) {
-//       res.json(error);
-//     }
-//   } else {
-//     res.redirect(303, "/api/trips");
-//   }
-// });
+  const isOwner = await isTripOwner(userId, tripId);
+  if (isOwner) {
+    try {
+      await Trip.findByIdAndRemove(tripId);
+      return res.json({
+        message: `Trip with ${tripId} is removed successfully.`,
+      });
+    } catch (error) {
+      console.log(error);
+      res.json(error);
+    }
+  } else {
+    res.redirect(303, "/api/trips");
+  }
+});
 
 export default router;
