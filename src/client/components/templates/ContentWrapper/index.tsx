@@ -7,18 +7,28 @@ import {
   UserOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/auth.context";
+import logo from "../../../assets/simply-go-logo.png";
+import "./styles.css";
 
 const { Header, Content, Footer } = Layout;
 
 const ContentWrapper = ({ children }: { children: JSX.Element }) => {
   const { isLoggedIn, user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate("/");
+  };
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Header>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
+      <Header className="header">
+        <div className="logo">
+          <img onClick={handleLogoClick} src={logo} alt="Logo" />
+        </div>
+        <Menu className="menu" mode="horizontal" defaultSelectedKeys={["2"]}>
           {isLoggedIn ? (
             <>
               <Menu.Item key="trips" icon={<SearchOutlined />}>

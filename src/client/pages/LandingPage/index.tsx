@@ -25,7 +25,7 @@ function LandingPage() {
       />
       <FeaturesSection />
 
-      <Title style={{ textAlign: "center", padding: "16px" }} level={2}>
+      <Title className="tripListTitle headerLevel2" level={2}>
         Here are some examples
       </Title>
 

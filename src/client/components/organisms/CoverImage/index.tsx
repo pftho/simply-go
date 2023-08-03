@@ -20,7 +20,7 @@ function CoverImage({
       }}
     >
       <div className="coverText">
-        <Title className="headerLevel1">{title}</Title>
+        <Title className="headerLevel1 ">{title}</Title>
         {tagline && <Title level={3}>{tagline} </Title>}
       </div>
     </div>

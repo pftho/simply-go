@@ -11,7 +11,7 @@ const FeaturesSection = () => {
 
   return (
     <div className="FeatureSectionContainer">
-      <Title className="FeatureSectionTitle" level={2}>
+      <Title className="FeatureSectionTitle headerLevel2" level={2}>
         What we offer
       </Title>
       <Row gutter={[16, 16]} justify="center" align="middle">

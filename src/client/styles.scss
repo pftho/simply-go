@@ -29,7 +29,12 @@ body {
 
 #root {
   .headerLevel1 {
-    font-family: "Pacifico";
+    font-family: "Lobster";
     color: var(--color-cloud-white);
+  }
+
+  .headerLevel2 {
+    font-family: "Lobster";
+    color: var(--color-sunset-orange);
   }
 }
