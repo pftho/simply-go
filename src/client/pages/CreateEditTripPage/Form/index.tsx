@@ -163,7 +163,7 @@ const CreateEditTripForm = ({ edit }: { edit: boolean }) => {
 
       <Divider orientation="left">Activities</Divider>
 
-      <Form.List initialValue={trip?.activities} name="activities">
+      <Form.List name="activities">
         {(fields, { add, remove }) => (
           <>
             <div>

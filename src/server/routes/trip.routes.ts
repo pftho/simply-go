@@ -4,10 +4,11 @@ import {
   AuthenticatedRequest,
   isAuthenticated,
 } from "../middleware/jwt.middleware";
-import User from "../models/User.model";
-import Trip from "../models/Trip.model";
-import { isTripOwner } from "../services";
 import Activity from "../models/Activity.model";
+import Trip from "../models/Trip.model";
+import User from "../models/User.model";
+import { isTripOwner } from "../services";
+import { Activity as ActivityType } from "../../client/types/activity/types";
 
 const router = express.Router();
 
@@ -152,8 +153,46 @@ router.put("/:tripId", isAuthenticated, async (req, res, next) => {
 
   if (isOwner) {
     try {
-      await Trip.findByIdAndUpdate(tripId, req.body, { new: true });
-      return res.json(await Trip.findById(tripId).populate("owner"));
+      const { activities, ...tripData } = req.body;
+
+      const updatedTrip = await Trip.findByIdAndUpdate(tripId, tripData, {
+        new: true,
+      });
+
+      if (!updatedTrip) {
+        throw new Error("Trip not found or error occurred during update.");
+      }
+
+      if (activities) {
+        await Activity.deleteMany({ tripId });
+
+        const tripActivitiesIds = [];
+
+        if (activities) {
+          for (const activity of activities) {
+            const newActivity = await Activity.create({
+              name: activity.name,
+              description: activity.description,
+              type: activity.type,
+              tripId: updatedTrip._id,
+            });
+
+            tripActivitiesIds.push(newActivity._id);
+          }
+        }
+
+        updatedTrip.activities = tripActivitiesIds;
+        await updatedTrip.save();
+
+        await Activity.findByIdAndUpdate({
+          $push: { trip: updatedTrip._id },
+        }).exec();
+      }
+
+      return res.status(201).json({
+        message: "Trip has successfully been updated",
+        trip: await Trip.findById(tripId).populate("owner"),
+      });
     } catch (error) {
       return res.json(error);
     }
