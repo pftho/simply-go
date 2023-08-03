@@ -29,7 +29,7 @@ export const locationOptions = (trips: Trip[]) => {
 export const budgetOptions = (trips: Trip[]) => {
   const budgetsWithDuplicates: Option[] = trips.map((trip) => ({
     value: trip._id,
-    label: `${trip.recommandedBudget}`,
+    label: `${trip.recommendedBudget}`,
   }));
 
   const uniqueLabels: { [key: string]: boolean } = {};

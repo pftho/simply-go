@@ -22,7 +22,7 @@ const tripSchema = new Schema(
       enum: ["Spring", "Summer", "Autumn", "Winter"],
       required: true,
     },
-    recommandedBudget: {
+    recommendedBudget: {
       type: Number,
     },
     owner: { type: Schema.Types.ObjectId, ref: "User" },

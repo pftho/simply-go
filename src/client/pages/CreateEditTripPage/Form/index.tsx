@@ -45,13 +45,14 @@ const CreateEditTripForm = ({ edit }: { edit: boolean }) => {
     activities: Activity[];
     description?: string;
     holidayTimeframe: string;
-    recommendedBudget: number;
+    recommendedBudget: string;
   }) => {
     if (edit && trip?._id) {
       return editTrip.mutate(
         {
           data: {
             ...values,
+            recommendedBudget: Number(values.recommendedBudget),
             ownerId: user._id,
             imageUrl: storedImageUrl,
           },
@@ -73,6 +74,7 @@ const CreateEditTripForm = ({ edit }: { edit: boolean }) => {
       return createTrip.mutate(
         {
           ...values,
+          recommendedBudget: Number(values.recommendedBudget),
           ownerId: user._id,
           imageUrl: storedImageUrl,
         },

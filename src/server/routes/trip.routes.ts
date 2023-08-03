@@ -76,7 +76,7 @@ router.post("/", isAuthenticated, async (req, res) => {
     description,
     holidayTimeframe,
     activities,
-    recommandedBudget,
+    recommendedBudget,
     ownerId,
     imageUrl,
   } = req.body;
@@ -86,22 +86,24 @@ router.post("/", isAuthenticated, async (req, res) => {
       name,
       description,
       holidayTimeframe,
-      recommandedBudget,
+      recommendedBudget,
       owner: new mongoose.Types.ObjectId(ownerId),
       imageUrl,
     });
 
     const tripActivitiesIds = [];
 
-    for (const activity of activities) {
-      const newActivity = await Activity.create({
-        name: activity.name,
-        description: activity.description,
-        type: activity.type,
-        tripId: newTrip._id,
-      });
+    if (activities) {
+      for (const activity of activities) {
+        const newActivity = await Activity.create({
+          name: activity.name,
+          description: activity.description,
+          type: activity.type,
+          tripId: newTrip._id,
+        });
 
-      tripActivitiesIds.push(newActivity._id);
+        tripActivitiesIds.push(newActivity._id);
+      }
     }
 
     newTrip.activities = tripActivitiesIds;

@@ -7,7 +7,7 @@ export interface Trip {
   description?: string;
   activities?: Activity[];
   holidayTimeframe: string;
-  recommandedBudget: number;
+  recommendedBudget: number;
   owner: User;
   imageUrl?: string;
 }
