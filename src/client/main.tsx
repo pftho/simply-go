@@ -17,9 +17,7 @@ function App() {
       <BrowserRouter>
         <QueryClientProvider client={queryClient}>
           <AuthProviderWrapper>
-            <GoogleFontLoader
-              fonts={[{ font: "Lato" }, { font: "Pacifico" }]}
-            />{" "}
+            <GoogleFontLoader fonts={[{ font: "Lato" }, { font: "Lobster" }]} />{" "}
             <ConfigProvider
               theme={{
                 token: {
