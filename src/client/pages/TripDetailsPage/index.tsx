@@ -70,7 +70,11 @@ function TripDetailsPage() {
                   <Title id="budget" level={2}>
                     Budget
                   </Title>
-                  <Typography>{trip?.recommandedBudget} Euros</Typography>
+                  <Typography>
+                    {trip?.recommandedBudget
+                      ? `${trip?.recommandedBudget} Euros`
+                      : "No budget yet"}
+                  </Typography>
                 </Col>
               </Row>
             </div>

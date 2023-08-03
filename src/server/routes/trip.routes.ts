@@ -1,6 +1,9 @@
 import express from "express";
 import mongoose from "mongoose";
-import { isAuthenticated } from "../middleware/jwt.middleware";
+import {
+  AuthenticatedRequest,
+  isAuthenticated,
+} from "../middleware/jwt.middleware";
 import User from "../models/User.model";
 import Trip from "../models/Trip.model";
 import { isTripOwner } from "../services";
@@ -92,9 +95,9 @@ router.post("/", isAuthenticated, async (req, res) => {
 
     for (const activity of activities) {
       const newActivity = await Activity.create({
-        name: activity.activityName,
-        description: activity.activityDescription,
-        type: activity.activityType,
+        name: activity.name,
+        description: activity.description,
+        type: activity.type,
         tripId: newTrip._id,
       });
 
@@ -123,39 +126,40 @@ router.post("/", isAuthenticated, async (req, res) => {
       trip: newTrip,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "error when creating the tri^" });
   }
 });
 
-// /**
-//  * @update
-//  * @summary put route to update a trip
-//  * @requestBody tripId: string
-//  * @responseBody 200 - <Trip>
-//  */
+/**
+ * @update
+ * @summary put route to update a trip
+ * @requestBody tripId: string
+ * @responseBody 200 - <Trip>
+ */
 
-// router.put("/trips/:tripId", isAuthenticated, async (req, res, next) => {
-//   const { tripId } = req.params;
-//   const userId = req.userAuth._id;
+router.put("/:tripId", isAuthenticated, async (req, res, next) => {
+  const { tripId } = req.params;
+  const userId = (req as AuthenticatedRequest).userAuth._id;
 
-//   if (!mongoose.Types.ObjectId.isValid(tripId)) {
-//     res.status(400).json({ message: "Specified id is not valid" });
-//     return;
-//   }
+  if (!mongoose.Types.ObjectId.isValid(tripId)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
 
-//   const isOwner = await isTripOwner(userId, tripId);
+  const isOwner = await isTripOwner(userId, tripId);
 
-//   if (isOwner) {
-//     try {
-//       await Trip.findByIdAndUpdate(tripId, req.body, { new: true });
-//       return res.json(await Trip.findById(tripId).populate("owner"));
-//     } catch (error) {
-//       return res.json(error);
-//     }
-//   } else {
-//     res.redirect(303, "/api/trips");
-//   }
-// });
+  if (isOwner) {
+    try {
+      await Trip.findByIdAndUpdate(tripId, req.body, { new: true });
+      return res.json(await Trip.findById(tripId).populate("owner"));
+    } catch (error) {
+      return res.json(error);
+    }
+  } else {
+    res.redirect(303, "/api/trips");
+  }
+});
 
 // /**
 //  * @delete

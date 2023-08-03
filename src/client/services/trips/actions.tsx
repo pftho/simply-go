@@ -1,9 +1,14 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { UseQueryOptions, useMutation, useQuery } from "@tanstack/react-query";
 import { useAuth } from "../../context/auth.context";
-import { Trip, TripCreationRequest } from "../../types/trip/types";
+import { Trip, TripCreationUpdateRequest } from "../../types/trip/types";
 import api from "../actions";
 
-export const useTripsQuery = (opt = {}) => {
+export const useTripsQuery = (
+  opt: Omit<
+    UseQueryOptions<Trip[], unknown, Trip[]>,
+    "queryKey" | "queryFn" | "initialData"
+  > = {}
+) => {
   const { getToken, user } = useAuth();
   return useQuery<Trip[]>({
     queryKey: [user?._id || "unlogged", "trips"],
@@ -19,7 +24,13 @@ export const useTripsQuery = (opt = {}) => {
   });
 };
 
-export const useTripQuery = (id?: string, opt = {}) => {
+export const useTripQuery = (
+  id?: string,
+  opt: Omit<
+    UseQueryOptions<Trip, unknown, Trip>,
+    "queryKey" | "queryFn" | "initialData"
+  > = {}
+) => {
   const { getToken, user } = useAuth();
   return useQuery<Trip>({
     queryKey: [user?._id || "unlogged", "trip", id],
@@ -37,8 +48,7 @@ export const useTripQuery = (id?: string, opt = {}) => {
 
 export const useCreateSurveyMutation = () => {
   const { getToken } = useAuth();
-
-  return useMutation<Trip, null, TripCreationRequest>(async (data) => {
+  return useMutation<Trip, null, TripCreationUpdateRequest>(async (data) => {
     return await api
       .post("/api/trips", data, {
         headers: { Authorization: `Bearer ${await getToken()}` },
@@ -50,12 +60,15 @@ export const useCreateSurveyMutation = () => {
 export const useUpdateTripMutation = () => {
   const { getToken } = useAuth();
 
-  return useMutation<Trip, null, { data: Partial<Trip>; id: string }>(
-    async ({ data, id }) =>
-      api
-        .patch(`/api/trips/${id}`, data, {
-          headers: { Authorization: `Bearer ${await getToken()}` },
-        })
-        .then((res) => res.data)
+  return useMutation<
+    Trip,
+    null,
+    { data: TripCreationUpdateRequest; tripId: string }
+  >(async ({ data, tripId }) =>
+    api
+      .put(`/api/trips/${tripId}`, data, {
+        headers: { Authorization: `Bearer ${await getToken()}` },
+      })
+      .then((res) => res.data)
   );
 };

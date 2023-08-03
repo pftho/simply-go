@@ -12,7 +12,7 @@ export interface Trip {
   imageUrl?: string;
 }
 
-export interface TripCreationRequest {
+export interface TripCreationUpdateRequest {
   name: string;
   description?: string;
   holidayTimeframe: string;

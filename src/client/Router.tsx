@@ -3,14 +3,13 @@ import IsPrivate from "./components/organisms/IsPrivate";
 import ContentWrapper from "./components/templates/ContentWrapper";
 import LoginPage from "./pages/Auth/Login";
 import RegisterPage from "./pages/Auth/Register";
-import CreateTripPage from "./pages/CreateTripPage";
+import CreateEditTripPage from "./pages/CreateEditTripPage";
 import HomePage from "./pages/HomePage";
-import ProfilePage from "./pages/ProfilePage";
-import TripDetailsPage from "./pages/TripDetailsPage";
 import LandingPage from "./pages/LandingPage";
-import NotFoundPage from "./pages/ResultPages/NotFoundPage";
+import ProfilePage from "./pages/ProfilePage";
 import ErrorPage from "./pages/ResultPages/ErrorPage";
-import EditTripPage from "./pages/EditTripPage";
+import NotFoundPage from "./pages/ResultPages/NotFoundPage";
+import TripDetailsPage from "./pages/TripDetailsPage";
 
 function Router() {
   const renderContentWrapper = (pageComponent: JSX.Element) => (
@@ -51,7 +50,7 @@ function Router() {
           element={
             <IsPrivate>
               <ContentWrapper>
-                <CreateTripPage />
+                <CreateEditTripPage edit={false} />
               </ContentWrapper>
             </IsPrivate>
           }
@@ -62,7 +61,7 @@ function Router() {
           element={
             <IsPrivate>
               <ContentWrapper>
-                <EditTripPage />
+                <CreateEditTripPage edit />
               </ContentWrapper>
             </IsPrivate>
           }
