@@ -10,7 +10,7 @@ import { Layout, Menu } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../context/auth.context";
 import logo from "../../../assets/simply-go-logo.png";
-import "./styles.css";
+import "./styles.scss";
 
 const { Header, Content, Footer } = Layout;
 
@@ -31,29 +31,51 @@ const ContentWrapper = ({ children }: { children: JSX.Element }) => {
         <Menu className="menu" mode="horizontal" defaultSelectedKeys={["2"]}>
           {isLoggedIn ? (
             <>
-              <Menu.Item key="trips" icon={<SearchOutlined />}>
+              <Menu.Item
+                className="navItem"
+                key="trips"
+                icon={<SearchOutlined className="navItem" />}
+              >
                 <Link to="/trips">Explore</Link>
               </Menu.Item>
-              <Menu.Item key="createTrip" icon={<PlusCircleOutlined />}>
+              <Menu.Item
+                className="navItem"
+                key="createTrip"
+                icon={<PlusCircleOutlined className="navItem" />}
+              >
                 <Link to="/trips/create">Plan a trip</Link>
               </Menu.Item>
-              <Menu.Item key="userProfile" icon={<UserOutlined />}>
+              <Menu.Item
+                className="navItem"
+                key="userProfile"
+                icon={<UserOutlined className="navItem" />}
+              >
                 <Link to={`/user/${user?._id}`}>My profile</Link>
               </Menu.Item>
               <Menu.Item
+                className="navItem"
                 key="logout"
                 onClick={logout}
-                icon={<LogoutOutlined />}
+                icon={<LogoutOutlined className="navItem" />}
               >
                 Logout
               </Menu.Item>
             </>
           ) : (
             <>
-              <Menu.Item key="register" icon={<UserAddOutlined />}>
+              <Menu.Item
+                className="navItem"
+                key="register"
+                icon={<UserAddOutlined className="navItem" />}
+              >
                 <Link to="/auth/register">Register</Link>
               </Menu.Item>
-              <Menu.Item key="login" onClick={logout} icon={<LoginOutlined />}>
+              <Menu.Item
+                className="navItem"
+                key="login"
+                onClick={logout}
+                icon={<LoginOutlined className="navItem" />}
+              >
                 Login
               </Menu.Item>
             </>

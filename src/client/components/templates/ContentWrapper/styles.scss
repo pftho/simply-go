@@ -11,6 +11,18 @@
   background-color: var(--color-ocean-blue);
 }
 
+#root {
+  .navItem {
+    color: var(--color-cloud-white);
+    font-weight: bold;
+  }
+
+  .navItem :hover {
+    color: var(--color-cloud-white);
+    font-weight: bold;
+  }
+}
+
 .logo img {
   height: 50px;
   object-position: center;
