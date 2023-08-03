@@ -17,13 +17,16 @@ function TripDetailsPageSider({
   return (
     <Sider className="sider" width={200}>
       {isUserTripOwner && (
-        <Button
-          type="primary"
-          onClick={() => navigate(`/trips/edit/${tripId}`)}
-          className="editBtn"
-        >
-          Edit
-        </Button>
+        <>
+          <Button
+            type="primary"
+            onClick={() => navigate(`/trips/edit/${tripId}`)}
+            className="editDeleteBtn"
+          >
+            Edit
+          </Button>
+          <Button className="editDeleteBtn">Delete</Button>
+        </>
       )}
       <Anchor targetOffset={64} affix showInkInFixed>
         <Link href="#description" title="Description" />
