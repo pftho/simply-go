@@ -5,7 +5,7 @@ import LoginPage from "./pages/Auth/Login";
 import RegisterPage from "./pages/Auth/Register";
 import CreateTripPage from "./pages/CreateTripPage";
 import HomePage from "./pages/HomePage";
-import ProfilePage from "./pages/ProflePage";
+import ProfilePage from "./pages/ProfilePage";
 import TripDetailsPage from "./pages/TripDetailsPage";
 import LandingPage from "./pages/LandingPage";
 import NotFoundPage from "./pages/ResultPages/NotFoundPage";
