@@ -128,7 +128,6 @@ router.post("/", isAuthenticated, async (req, res) => {
       trip: newTrip,
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "error when creating the tri^" });
   }
 });
