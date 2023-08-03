@@ -19,7 +19,7 @@ const ContentWrapper = ({ children }: { children: JSX.Element }) => {
   const navigate = useNavigate();
 
   const handleLogoClick = () => {
-    navigate("/");
+    isLoggedIn ? navigate("/trips") : navigate("/");
   };
 
   return (
