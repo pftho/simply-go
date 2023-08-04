@@ -22,7 +22,7 @@ export const useDeleteUserMutation = () => {
 
   return useMutation<void, Error, string>(async (userId) => {
     const token = await getToken();
-    await api.delete(`/api/user/${userId}`, {
+    await api.delete(`/api/profile/${userId}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
   });

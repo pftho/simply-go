@@ -212,8 +212,6 @@ router.delete("/:tripId", isAuthenticated, async (req, res) => {
   const { tripId } = req.params;
   const userId = (req as AuthenticatedRequest).userAuth._id;
 
-  console.log(tripId);
-
   if (!mongoose.Types.ObjectId.isValid(tripId)) {
     res.status(400).json({ message: "Specified id is not valid" });
     return;
