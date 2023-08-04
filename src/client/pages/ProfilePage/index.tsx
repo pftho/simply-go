@@ -1,11 +1,12 @@
 import { Anchor, Button, Col, Layout, Row, Spin, Typography } from "antd";
 import CoverImage from "../../components/organisms/CoverImage";
-import UserProfile from "../../components/organisms/UserCard";
+import UserProfile from "./UserCard";
 import { useAuth } from "../../context/auth.context";
 import { useTripsQuery } from "../../services/trips/actions";
 import TripCard from "../../components/organisms/TripCard";
 import { Trip } from "../../types/trip/types";
 import Sider from "antd/es/layout/Sider";
+import "./style.scss";
 
 function ProfilePage() {
   const { user } = useAuth();
@@ -25,7 +26,7 @@ function ProfilePage() {
       {user ? (
         <>
           <CoverImage imageUrl={imageUrl} title={"My Profile"} />
-          <Layout style={{ minHeight: "100vh" }}>
+          <Layout className="layout">
             <Sider theme="light" width={200} className="siderUserProfile">
               <Button type="primary" className="userProfileBtn">
                 Edit Profile
@@ -36,8 +37,8 @@ function ProfilePage() {
               </Anchor>
             </Sider>
             <Layout>
-              <Content className="contentTripDetailsContainer">
-                <div className="contentTripDetailsDiv">
+              <Content className="contentUserProfilePageContainer">
+                <div className="contentUserProfilePageDiv">
                   <Title id="profile" level={2}>
                     My Profile
                   </Title>
@@ -60,7 +61,7 @@ function ProfilePage() {
                         );
                       })
                     ) : (
-                      <Typography> "No trips yet</Typography>
+                      <Typography>No trips yet</Typography>
                     )}
                   </Row>
                 </div>
