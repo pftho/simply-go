@@ -225,7 +225,6 @@ router.delete("/:tripId", isAuthenticated, async (req, res) => {
         message: `Trip with ${tripId} is removed successfully.`,
       });
     } catch (error) {
-      console.log(error);
       res.json(error);
     }
   } else {

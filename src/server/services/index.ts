@@ -5,7 +5,6 @@ export const isTripOwner = async (userId: string, tripId: string) => {
     const tripToPatch = await Trip.findById(tripId);
     return String(tripToPatch?.owner) === userId;
   } catch (error) {
-    console.log(error);
     return;
   }
 };
