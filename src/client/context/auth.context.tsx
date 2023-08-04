@@ -16,7 +16,7 @@ type AuthContextValue = {
     password: string
   ) => Promise<void>;
   logout: () => Promise<void>;
-  getToken: () => Promise<string>;
+  getToken: () => Promise<string | null>;
 };
 
 const AuthContext = React.createContext<AuthContextValue>({
