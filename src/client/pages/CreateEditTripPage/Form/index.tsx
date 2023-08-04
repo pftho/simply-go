@@ -1,5 +1,4 @@
 import { PlusOutlined } from "@ant-design/icons";
-import { useQueryClient } from "@tanstack/react-query";
 import {
   Button,
   Divider,
@@ -9,85 +8,33 @@ import {
   Select,
   Spin,
   Typography,
-  message,
 } from "antd";
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../../../context/auth.context";
-import {
-  useCreateSurveyMutation,
-  useTripQuery,
-  useUpdateTripMutation,
-} from "../../../services/trips/actions";
-import { Activity } from "../../../types/activity/types";
+import { useTripQuery } from "../../../services/trips/actions";
 import { HolidayTimeframeEnum } from "../../../types/trip/enums";
 import FormActivityRow from "../FormItineraryRow";
 import "./styles.css";
+import { TripFormValues, useTripForm } from "./useTripForm";
 
 const CreateEditTripForm = ({ edit }: { edit: boolean }) => {
   const { Option } = Select;
   const { Title } = Typography;
-  const queryClient = useQueryClient();
-  const createTrip = useCreateSurveyMutation();
-  const editTrip = useUpdateTripMutation();
+
   const { id } = useParams();
   const { data: trip } = useTripQuery(id, { enabled: edit });
   const { user } = useAuth();
   const [storedImageUrl, setStoredImageUrl] = useState("");
-  const navigate = useNavigate();
 
   if (!user) {
     return <Spin />;
   }
 
-  const onFinish = (values: {
-    name: string;
-    activities: Activity[];
-    description?: string;
-    holidayTimeframe: string;
-    recommendedBudget: string;
-  }) => {
-    if (edit && trip?._id) {
-      return editTrip.mutate(
-        {
-          data: {
-            ...values,
-            recommendedBudget: Number(values.recommendedBudget),
-            ownerId: user._id,
-            imageUrl: storedImageUrl,
-          },
-          tripId: trip._id,
-        },
-        {
-          onSuccess: () => {
-            queryClient.invalidateQueries({
-              queryKey: [user?._id || "unlogged", "trips"],
-            });
-            queryClient.invalidateQueries({
-              queryKey: [user?._id || "unlogged", "trip", trip._id.toString()],
-            });
-            navigate(`/trips/${id}`);
-          },
-        }
-      );
-    } else {
-      return createTrip.mutate(
-        {
-          ...values,
-          recommendedBudget: Number(values.recommendedBudget),
-          ownerId: user._id,
-          imageUrl: storedImageUrl,
-        },
-        {
-          onSuccess: () => {
-            queryClient.invalidateQueries({
-              queryKey: [user?._id || "unlogged", "trips"],
-            });
-            navigate("/trips");
-          },
-        }
-      );
-    }
+  const { onFinish } = useTripForm();
+
+  const handleFormFinish = (values: TripFormValues) => {
+    onFinish(values, edit, user, storedImageUrl, trip);
   };
 
   const handleImageUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,7 +44,7 @@ const CreateEditTripForm = ({ edit }: { edit: boolean }) => {
   return (
     <Form
       className="createTripForm"
-      onFinish={onFinish}
+      onFinish={(values) => handleFormFinish(values)}
       initialValues={
         edit
           ? {
