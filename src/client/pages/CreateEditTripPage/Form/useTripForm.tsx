@@ -1,20 +1,11 @@
-import { Activity } from "../../../types/activity/types";
+import { useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import {
   useCreateSurveyMutation,
   useUpdateTripMutation,
 } from "../../../services/trips/actions";
-import { useQueryClient } from "@tanstack/react-query";
+import { Trip, TripCreationUpdateRequest } from "../../../types/trip/types";
 import { User } from "../../../types/user/types";
-import { Trip } from "../../../types/trip/types";
-
-export interface TripFormValues {
-  name: string;
-  activities: Activity[];
-  description?: string;
-  holidayTimeframe: string;
-  recommendedBudget: string;
-}
 
 // Custom hook
 export const useTripForm = () => {
@@ -24,7 +15,7 @@ export const useTripForm = () => {
   const editTrip = useUpdateTripMutation();
 
   const onFinish = (
-    values: TripFormValues,
+    values: TripCreationUpdateRequest,
     edit: boolean,
     user: User,
     storedImageUrl: string,

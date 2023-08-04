@@ -10,13 +10,14 @@ import {
   Typography,
 } from "antd";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useAuth } from "../../../context/auth.context";
 import { useTripQuery } from "../../../services/trips/actions";
 import { HolidayTimeframeEnum } from "../../../types/trip/enums";
 import FormActivityRow from "../FormItineraryRow";
 import "./styles.css";
-import { TripFormValues, useTripForm } from "./useTripForm";
+import { useTripForm } from "./useTripForm";
+import { TripCreationUpdateRequest } from "../../../types/trip/types";
 
 const CreateEditTripForm = ({ edit }: { edit: boolean }) => {
   const { Option } = Select;
@@ -33,7 +34,7 @@ const CreateEditTripForm = ({ edit }: { edit: boolean }) => {
 
   const { onFinish } = useTripForm();
 
-  const handleFormFinish = (values: TripFormValues) => {
+  const handleFormFinish = (values: TripCreationUpdateRequest) => {
     onFinish(values, edit, user, storedImageUrl, trip);
   };
 
