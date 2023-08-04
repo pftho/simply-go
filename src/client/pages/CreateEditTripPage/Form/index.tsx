@@ -1,27 +1,17 @@
 import { PlusOutlined } from "@ant-design/icons";
-import {
-  Button,
-  Divider,
-  Form,
-  Image,
-  Input,
-  Select,
-  Spin,
-  Typography,
-} from "antd";
+import { Button, Divider, Form, Image, Input, Select, Spin } from "antd";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../../context/auth.context";
 import { useTripQuery } from "../../../services/trips/actions";
 import { HolidayTimeframeEnum } from "../../../types/trip/enums";
-import FormActivityRow from "../FormItineraryRow";
-import "./styles.css";
-import { useTripForm } from "./useTripForm";
 import { TripCreationUpdateRequest } from "../../../types/trip/types";
+import "./styles.scss";
+import { useTripForm } from "./useTripForm";
+import FormActivityRow from "../FormActivityRow";
 
 const CreateEditTripForm = ({ edit }: { edit: boolean }) => {
   const { Option } = Select;
-  const { Title } = Typography;
 
   const { id } = useParams();
   const { data: trip } = useTripQuery(id, { enabled: edit });
@@ -55,8 +45,6 @@ const CreateEditTripForm = ({ edit }: { edit: boolean }) => {
       }
       layout="vertical"
     >
-      <Title level={5}>My Trip</Title>
-
       <Form.Item
         label="Name"
         name="name"
@@ -109,7 +97,9 @@ const CreateEditTripForm = ({ edit }: { edit: boolean }) => {
         </Select>
       </Form.Item>
 
-      <Divider orientation="left">Activities</Divider>
+      <Divider className="dividerActivities" orientation="left">
+        Activities
+      </Divider>
 
       <Form.List name="activities">
         {(fields, { add, remove }) => (

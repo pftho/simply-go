@@ -36,15 +36,25 @@ function TripDetailsPage() {
             <div className="contentTripDetailsDiv">
               <Row gutter={[16, 16]}>
                 <Col span={24}>
-                  <Title id="description" level={2}>
+                  <Title className="headerLevel2" id="description" level={2}>
                     Description
                   </Title>
-                  {trip?.description}
+                  <Typography.Paragraph>
+                    {trip?.description}
+                  </Typography.Paragraph>
                 </Col>
-              </Row>
-              <Row gutter={[16, 16]}>
                 <Col span={24}>
-                  <Title id="activities" level={2}>
+                  <Title className="headerLevel2" id="budget" level={2}>
+                    Budget
+                  </Title>
+                  <Typography.Paragraph>
+                    {trip?.recommendedBudget
+                      ? `${trip?.recommendedBudget} Euros`
+                      : "No budget yet"}
+                  </Typography.Paragraph>
+                </Col>
+                <Col span={24}>
+                  <Title className="headerLevel2" id="activities" level={2}>
                     Activities
                   </Title>
                   {trip?.activities?.length ? (
@@ -56,18 +66,6 @@ function TripDetailsPage() {
                       <Typography>No activities yet</Typography>
                     </>
                   )}
-                </Col>
-              </Row>
-              <Row gutter={[16, 16]}>
-                <Col span={24}>
-                  <Title id="budget" level={2}>
-                    Budget
-                  </Title>
-                  <Typography>
-                    {trip?.recommendedBudget
-                      ? `${trip?.recommendedBudget} Euros`
-                      : "No budget yet"}
-                  </Typography>
                 </Col>
               </Row>
             </div>

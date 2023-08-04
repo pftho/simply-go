@@ -2,7 +2,6 @@ import { DeleteOutlined } from "@ant-design/icons";
 import { Button, Col, Form, Input, Row, Select } from "antd";
 import { ActivityTypeList } from "../../../types/activity/enums";
 import "./styles.css";
-import { Activity } from "../../../types/activity/types";
 
 function FormActivityRow({
   remove,

@@ -1,0 +1,15 @@
+.createTripForm {
+  width: 50%;
+}
+
+.createTripButton {
+  margin-top: 15px;
+}
+
+#root {
+  .dividerActivities {
+    border-top: 1px var(--color-ocean-blue);
+    color: var(--color-ocean-blue);
+    font-size: 18px;
+  }
+}

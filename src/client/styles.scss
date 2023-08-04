@@ -30,7 +30,9 @@ body {
 #root {
   .headerLevel1 {
     font-family: "Lobster";
+    font-size: 70px;
     color: var(--color-cloud-white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   }
 
   .headerLevel2 {
