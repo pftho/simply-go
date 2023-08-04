@@ -21,3 +21,9 @@ export interface TripCreationUpdateRequest {
   ownerId: string;
   imageUrl?: string;
 }
+
+export interface TripSeachFilters {
+  name?: string;
+  recommendedBudget?: string;
+  holidayTimeframe?: string;
+}

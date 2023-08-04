@@ -6,7 +6,7 @@ import "./styles.css";
 function TripList({ trips }: { trips?: Trip[] }) {
   return (
     <Row className="tripListDiv" gutter={[16, 16]}>
-      {trips ? (
+      {trips?.length ? (
         trips?.map((trip: Trip) => {
           return (
             <Col key={trip._id}>
@@ -20,7 +20,7 @@ function TripList({ trips }: { trips?: Trip[] }) {
           );
         })
       ) : (
-        <Typography>No trips yet</Typography>
+        <Typography>No trips</Typography>
       )}
     </Row>
   );
