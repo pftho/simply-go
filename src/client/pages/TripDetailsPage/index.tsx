@@ -1,4 +1,4 @@
-import { Col, Layout, Row, Spin, Typography } from "antd";
+import { Col, Empty, Layout, Row, Spin, Typography } from "antd";
 import { useParams } from "react-router-dom";
 import ActivityCard from "../../components/organisms/ActivityCard";
 import CoverImage from "../../components/organisms/CoverImage";
@@ -62,9 +62,7 @@ function TripDetailsPage() {
                       <ActivityCard key={tripActivity._id} {...tripActivity} />
                     ))
                   ) : (
-                    <>
-                      <Typography>No activities yet</Typography>
-                    </>
+                    <Empty />
                   )}
                 </Col>
               </Row>

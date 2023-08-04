@@ -80,17 +80,17 @@ const UserCardForm = ({
             </Form.Item>
           </Form>
         ) : (
-          <>
-            <div className="userProfileInfoDiv">
-              {editedUser?.imageUrl && (
-                <Avatar size={128} src={editedUser?.imageUrl} />
-              )}
+          <div className="userProfileInfoDiv">
+            {editedUser?.imageUrl && (
+              <Avatar size={128} src={editedUser?.imageUrl} />
+            )}
+            <div className="userInfo">
               <Typography.Title level={2}>
                 {editedUser?.username}
               </Typography.Title>
               <Typography.Text>Email: {editedUser?.email}</Typography.Text>
             </div>
-          </>
+          </div>
         )}
       </div>
     </Content>

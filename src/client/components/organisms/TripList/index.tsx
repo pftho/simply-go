@@ -1,4 +1,4 @@
-import { Col, Row, Typography } from "antd";
+import { Col, Empty, Row, Typography } from "antd";
 import { Trip } from "../../../types/trip/types";
 import TripCard from "../TripCard";
 import "./styles.css";
@@ -20,7 +20,7 @@ function TripList({ trips }: { trips?: Trip[] }) {
           );
         })
       ) : (
-        <Typography>No trips</Typography>
+        <Empty />
       )}
     </Row>
   );

@@ -32,24 +32,24 @@ function ProfilePage() {
           <CoverImage imageUrl={imageUrl} title={"My Profile"} />
           <Layout className="layout">
             <ProfilePageSider setEditingProfile={setEditingProfile} />
-            <Layout>
-              <Content className="contentUserProfilePageContainer">
-                <div className="contentUserProfilePageDiv">
-                  <Title id="profile" level={2}>
-                    My Profile
-                  </Title>
-                  <UserCardForm
-                    editingProfile={editingProfile}
-                    setEditingProfile={setEditingProfile}
-                    user={user}
-                  />
-                  <Title id="userTrips" level={2}>
-                    My Trips
-                  </Title>
-                  <TripList trips={userTrips} />
-                </div>
-              </Content>
-            </Layout>
+            <Content className="contentUserProfilePageContainer">
+              <div className="userInfo">
+                <Title id="profile" level={2}>
+                  My Profile
+                </Title>
+                <UserCardForm
+                  editingProfile={editingProfile}
+                  setEditingProfile={setEditingProfile}
+                  user={user}
+                />
+              </div>
+              <div className="userInfo">
+                <Title id="userTrips" level={2}>
+                  My Trips
+                </Title>
+                <TripList trips={userTrips} />
+              </div>
+            </Content>
           </Layout>
         </>
       ) : (

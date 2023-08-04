@@ -1,10 +1,8 @@
-.userProfileContent {
+.userProfileInfoDiv {
   display: flex;
-  padding: 16px;
-  align-items: baseline;
+  align-items: center;
 }
 
-.userProfileInfoDiv {
-  margin-left: 16px;
-  justify-content: center;
+.userInfo {
+  margin-left: 20px;
 }
