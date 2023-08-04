@@ -1,11 +1,10 @@
-import { Anchor, Button, Col, Layout, Row, Spin, Typography } from "antd";
+import { Anchor, Layout, Spin, Typography } from "antd";
 import CoverImage from "../../components/organisms/CoverImage";
-import UserProfile from "./UserCard";
+import TripList from "../../components/organisms/TripList";
 import { useAuth } from "../../context/auth.context";
 import { useTripsQuery } from "../../services/trips/actions";
-import TripCard from "../../components/organisms/TripCard";
-import { Trip } from "../../types/trip/types";
-import Sider from "antd/es/layout/Sider";
+import ProfilePageSider from "./ProfilePageSider";
+import UserProfile from "./UserCard";
 import "./style.scss";
 
 function ProfilePage() {
@@ -27,15 +26,7 @@ function ProfilePage() {
         <>
           <CoverImage imageUrl={imageUrl} title={"My Profile"} />
           <Layout className="layout">
-            <Sider theme="light" width={200} className="siderUserProfile">
-              <Button type="primary" className="userProfileBtn">
-                Edit Profile
-              </Button>
-              <Anchor targetOffset={64} affix showInkInFixed>
-                <Link href="#description" title="Description" />
-                <Link href="#userTrips" title="My Trips" />
-              </Anchor>
-            </Sider>
+            <ProfilePageSider />
             <Layout>
               <Content className="contentUserProfilePageContainer">
                 <div className="contentUserProfilePageDiv">
@@ -46,24 +37,7 @@ function ProfilePage() {
                   <Title id="userTrips" level={2}>
                     My Trips
                   </Title>
-                  <Row gutter={[16, 16]}>
-                    {userTrips ? (
-                      userTrips?.map((trip: Trip) => {
-                        return (
-                          <Col key={trip._id}>
-                            <TripCard
-                              tripImage={trip.imageUrl ? trip.imageUrl : ""}
-                              tripName={trip.name}
-                              tripHolidayTimeframe={trip.holidayTimeframe}
-                              tripId={trip._id}
-                            />
-                          </Col>
-                        );
-                      })
-                    ) : (
-                      <Typography>No trips yet</Typography>
-                    )}
-                  </Row>
+                  <TripList trips={userTrips} />
                 </div>
               </Content>
             </Layout>

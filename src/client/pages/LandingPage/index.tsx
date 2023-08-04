@@ -5,6 +5,7 @@ import { useTripsQuery } from "../../services/trips/actions";
 import { Trip } from "../../types/trip/types";
 import "./styles.css";
 import FeaturesSection from "./LandingPageFeaturesSection";
+import TripList from "../../components/organisms/TripList";
 
 function LandingPage() {
   const { data: trips, isLoading } = useTripsQuery();
@@ -28,23 +29,7 @@ function LandingPage() {
       <Title className="tripListTitle headerLevel2" level={2}>
         Here are some examples
       </Title>
-
-      {trips?.length && (
-        <Row className="tripListContainer" gutter={[16, 16]}>
-          {trips?.map((trip: Trip) => {
-            return (
-              <Col key={trip._id}>
-                <TripCard
-                  tripImage={trip.imageUrl ? trip.imageUrl : ""}
-                  tripName={trip.name}
-                  tripHolidayTimeframe={trip.holidayTimeframe}
-                  tripId={trip._id}
-                />
-              </Col>
-            );
-          })}
-        </Row>
-      )}
+      <TripList trips={trips} />
     </>
   );
 }
