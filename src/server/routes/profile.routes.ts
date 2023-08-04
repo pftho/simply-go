@@ -6,6 +6,7 @@ import {
   isAuthenticated,
 } from "../middleware/jwt.middleware";
 import fileUploader from "../config/cloudinary.config";
+import Trip from "../models/Trip.model";
 
 const router = express.Router();
 
@@ -96,7 +97,7 @@ router.delete("/:userId", isAuthenticated, async (req, res, next) => {
         message: "Unauthorized. You can only delete your own account.",
       });
     }
-
+    await Trip.deleteMany({ owner: userId });
     const deletedUser = await User.findByIdAndRemove(userId);
 
     if (!deletedUser) {
