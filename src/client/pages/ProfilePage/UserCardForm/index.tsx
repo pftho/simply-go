@@ -1,11 +1,11 @@
 import { Avatar, Button, Form, Input, Typography, message } from "antd";
 import { Content } from "antd/es/layout/layout";
-import { EditUseRequest, User } from "../../../types/user/types";
-import "./styles.css";
-import { useUpdateUserMutation } from "../../../services/users/actions";
 import { useState } from "react";
+import { useUpdateUserMutation } from "../../../services/users/actions";
+import { EditUseRequest, User, UserProfile } from "../../../types/user/types";
+import "./styles.css";
 
-const UserProfile = ({
+const UserCardForm = ({
   user,
   editingProfile,
   setEditingProfile,
@@ -17,10 +17,12 @@ const UserProfile = ({
   const [form] = Form.useForm();
   const editUserProfile = useUpdateUserMutation();
   const [imageUrlPreview, setImageUrlPreview] = useState<string | null>(null);
+  const [editedUser, setEditedUser] = useState<UserProfile | null>(user);
 
   const handleSave = async (values: EditUseRequest) => {
     try {
       await editUserProfile.mutateAsync({ data: values, userId: user._id });
+      setEditedUser(values);
       setEditingProfile(false);
     } catch (error) {
       message.error(
@@ -80,9 +82,13 @@ const UserProfile = ({
         ) : (
           <>
             <div className="userProfileInfoDiv">
-              {user.imageUrl && <Avatar size={128} src={user.imageUrl} />}
-              <Typography.Title level={2}>{user.username}</Typography.Title>
-              <Typography.Text>Email: {user.email}</Typography.Text>
+              {editedUser?.imageUrl && (
+                <Avatar size={128} src={editedUser?.imageUrl} />
+              )}
+              <Typography.Title level={2}>
+                {editedUser?.username}
+              </Typography.Title>
+              <Typography.Text>Email: {editedUser?.email}</Typography.Text>
             </div>
           </>
         )}
@@ -91,4 +97,4 @@ const UserProfile = ({
   );
 };
 
-export default UserProfile;
+export default UserCardForm;

@@ -6,7 +6,7 @@ import { useAuth } from "../../context/auth.context";
 import { useTripsQuery } from "../../services/trips/actions";
 import ProfilePageSider from "./ProfilePageSider";
 import "./style.scss";
-import UserProfile from "./UserCard";
+import UserCardForm from "./UserCardForm";
 
 function ProfilePage() {
   const { user } = useAuth();
@@ -38,7 +38,7 @@ function ProfilePage() {
                   <Title id="profile" level={2}>
                     My Profile
                   </Title>
-                  <UserProfile
+                  <UserCardForm
                     editingProfile={editingProfile}
                     setEditingProfile={setEditingProfile}
                     user={user}
