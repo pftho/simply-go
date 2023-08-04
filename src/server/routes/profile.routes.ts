@@ -97,7 +97,7 @@ router.delete("/:userId", isAuthenticated, async (req, res, next) => {
       });
     }
 
-    const deletedUser = await User.findByIdAndUpdate(userId, { deleted: true });
+    const deletedUser = await User.findByIdAndRemove(userId);
 
     if (!deletedUser) {
       return res.status(404).json({ message: "User not found" });

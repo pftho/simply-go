@@ -12,7 +12,7 @@ function ProfilePageSider({
 }) {
   const { Link } = Anchor;
   const deleteUserMutation = useDeleteUserMutation();
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const navigate = useNavigate();
 
   const handleEditClick = () => {
@@ -22,6 +22,7 @@ function ProfilePageSider({
   const handleDeleteClick = async (userId: string) => {
     try {
       await deleteUserMutation.mutateAsync(userId);
+      logout();
       navigate("/");
     } catch (error) {
       message.error(
