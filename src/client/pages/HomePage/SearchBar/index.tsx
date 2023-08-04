@@ -12,7 +12,7 @@ const SearchBar = ({
   setTripsToDisplay,
 }: {
   trips: Trip[];
-  setTripsToDisplay: React.Dispatch<React.SetStateAction<Trip[] | undefined>>;
+  setTripsToDisplay: React.Dispatch<React.SetStateAction<Trip[]>>;
 }) => {
   const [selectedName, setSelectedName] = useState("");
   const [selectedBudget, setSelectedBudget] = useState(0);

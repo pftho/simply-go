@@ -100,7 +100,7 @@ router.post("/", isAuthenticated, async (req, res) => {
           name: activity.name,
           description: activity.description,
           type: activity.type,
-          tripId: newTrip._id,
+          trip: newTrip._id,
         });
 
         tripActivitiesIds.push(newActivity._id);
@@ -220,7 +220,7 @@ router.delete("/:tripId", isAuthenticated, async (req, res) => {
   const isOwner = await isTripOwner(userId, tripId);
   if (isOwner) {
     try {
-      await Activity.deleteMany({ tripId });
+      await Activity.deleteMany({ trip: tripId });
       await Trip.findByIdAndRemove(tripId);
       return res.json({
         message: `Trip with ${tripId} is removed successfully.`,
