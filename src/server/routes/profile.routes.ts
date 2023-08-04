@@ -51,7 +51,7 @@ router.post(
  * @responseBody 200 - <User>
  */
 
-router.put("/user/:userId", isAuthenticated, async (req, res) => {
+router.put("/:userId", isAuthenticated, async (req, res) => {
   const { userId } = req.params;
   const { username, email, imageUrl } = req.body;
 

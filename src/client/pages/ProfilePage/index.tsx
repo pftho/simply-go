@@ -1,15 +1,17 @@
-import { Anchor, Layout, Spin, Typography } from "antd";
+import { Layout, Spin, Typography } from "antd";
+import { useState } from "react";
 import CoverImage from "../../components/organisms/CoverImage";
 import TripList from "../../components/organisms/TripList";
 import { useAuth } from "../../context/auth.context";
 import { useTripsQuery } from "../../services/trips/actions";
 import ProfilePageSider from "./ProfilePageSider";
-import UserProfile from "./UserCard";
 import "./style.scss";
+import UserProfile from "./UserCard";
 
 function ProfilePage() {
   const { user } = useAuth();
   const { data: trips, isLoading } = useTripsQuery();
+  const [editingProfile, setEditingProfile] = useState(false);
 
   const { Content } = Layout;
   const { Title } = Typography;
@@ -29,14 +31,18 @@ function ProfilePage() {
         <>
           <CoverImage imageUrl={imageUrl} title={"My Profile"} />
           <Layout className="layout">
-            <ProfilePageSider />
+            <ProfilePageSider setEditingProfile={setEditingProfile} />
             <Layout>
               <Content className="contentUserProfilePageContainer">
                 <div className="contentUserProfilePageDiv">
                   <Title id="profile" level={2}>
                     My Profile
                   </Title>
-                  <UserProfile user={user} />
+                  <UserProfile
+                    editingProfile={editingProfile}
+                    setEditingProfile={setEditingProfile}
+                    user={user}
+                  />
                   <Title id="userTrips" level={2}>
                     My Trips
                   </Title>
