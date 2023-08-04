@@ -37,7 +37,7 @@ const SearchBar = ({
     const filteredTrips = trips.filter((trip) => {
       const nameMatches = selectedName ? trip.name === selectedName : true;
       const budgetMatches = selectedBudget
-        ? trip.recommendedBudget === selectedBudget
+        ? trip.recommendedBudget === Number(selectedBudget)
         : true;
       const periodMatches = selectedPeriod
         ? trip.holidayTimeframe === selectedPeriod
