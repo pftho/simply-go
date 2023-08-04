@@ -220,6 +220,7 @@ router.delete("/:tripId", isAuthenticated, async (req, res) => {
   const isOwner = await isTripOwner(userId, tripId);
   if (isOwner) {
     try {
+      await Activity.deleteMany({ tripId });
       await Trip.findByIdAndRemove(tripId);
       return res.json({
         message: `Trip with ${tripId} is removed successfully.`,

@@ -5,6 +5,8 @@ import { useDeleteTripMutation } from "../../../services/trips/actions";
 import queryClient from "../../../reactQuery";
 import { Trip } from "../../../types/trip/types";
 import { User } from "../../../types/user/types";
+import ConfirmationModal from "../../../components/organisms/ConfirmModal";
+import { useState } from "react";
 
 const { Sider } = Layout;
 const { Link } = Anchor;
@@ -13,6 +15,11 @@ function TripDetailsPageSider({ user, trip }: { user: User; trip: Trip }) {
   const navigate = useNavigate();
   const deleteTripMutation = useDeleteTripMutation();
   const isUserTripOwner = user?._id === trip?.owner._id;
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsOpen(true);
+  };
 
   const handleDelete = async (tripId: string) => {
     try {
@@ -31,10 +38,23 @@ function TripDetailsPageSider({ user, trip }: { user: User; trip: Trip }) {
     }
   };
 
+  const handleCancel = () => {
+    setIsOpen(false);
+  };
+
   return (
     <Sider className="sider" width={200}>
       {isUserTripOwner && (
         <>
+          <ConfirmationModal
+            modalText={
+              "Deleting this trip will be permanent, do you wish to continue ?"
+            }
+            title={"Confirm Trip Deletion"}
+            isOpen={isOpen}
+            handleOk={() => handleDelete(trip?._id)}
+            handleCancel={handleCancel}
+          />
           <Button
             type="primary"
             onClick={() => navigate(`/trips/edit/${trip._id}`)}
@@ -42,10 +62,7 @@ function TripDetailsPageSider({ user, trip }: { user: User; trip: Trip }) {
           >
             Edit
           </Button>
-          <Button
-            className="editDeleteBtn"
-            onClick={() => handleDelete(trip._id)}
-          >
+          <Button className="editDeleteBtn" onClick={handleClick}>
             Delete
           </Button>
         </>
