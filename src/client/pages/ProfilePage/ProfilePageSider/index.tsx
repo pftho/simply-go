@@ -4,6 +4,8 @@ import "./style.scss";
 import { useDeleteUserMutation } from "../../../services/users/actions";
 import { useAuth } from "../../../context/auth.context";
 import { useNavigate } from "react-router-dom";
+import ConfirmationModal from "../../../components/organisms/ConfirmModal";
+import { useState } from "react";
 
 function ProfilePageSider({
   setEditingProfile,
@@ -14,12 +16,17 @@ function ProfilePageSider({
   const deleteUserMutation = useDeleteUserMutation();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleEditClick = () => {
     setEditingProfile(true);
   };
 
-  const handleDeleteClick = async (userId: string) => {
+  const handleClick = () => {
+    setIsOpen(true);
+  };
+
+  const handleDelete = async (userId: string) => {
     try {
       await deleteUserMutation.mutateAsync(userId);
       logout();
@@ -31,10 +38,23 @@ function ProfilePageSider({
     }
   };
 
+  const handleCancel = () => {
+    setIsOpen(false);
+  };
+
   return (
     <Sider theme="light" width={200} className="siderUserProfile">
       {user && (
         <>
+          <ConfirmationModal
+            modalText={
+              "Deleting your account will be permanent, do you wish to continue ?"
+            }
+            title={"Confirm Account Deletion"}
+            isOpen={isOpen}
+            handleOk={() => handleDelete(user?._id)}
+            handleCancel={handleCancel}
+          />
           <Button
             onClick={handleEditClick}
             type="primary"
@@ -42,10 +62,7 @@ function ProfilePageSider({
           >
             Edit Profile
           </Button>
-          <Button
-            onClick={() => handleDeleteClick(user?._id)}
-            className="userProfileEditBtn"
-          >
+          <Button onClick={handleClick} className="userProfileEditBtn">
             Delete My Account
           </Button>
         </>
