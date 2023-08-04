@@ -6,25 +6,13 @@ import "./styles.css";
 
 const UserProfile = ({ user }: { user: User }) => {
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      <Sider theme="light" width={200} className="siderUserProfile">
-        <Button type="primary" className="userProfileBtn">
-          Edit Profile
-        </Button>
-        <Button type="primary" className="userProfileBtn">
-          My Trips
-        </Button>
-      </Sider>
-      <Layout>
-        <Content className="userProfileContent">
-          <Avatar size={64} icon="user" />
-          <div className="userProfileInfoDiv">
-            <Typography.Title level={2}>{user.username}</Typography.Title>
-            <Typography.Text>Email: {user.email}</Typography.Text>
-          </div>
-        </Content>
-      </Layout>
-    </Layout>
+    <Content className="userProfileContent">
+      <Avatar size={64} icon="user" />
+      <div className="userProfileInfoDiv">
+        <Typography.Title level={2}>{user.username}</Typography.Title>
+        <Typography.Text>Email: {user.email}</Typography.Text>
+      </div>
+    </Content>
   );
 };
 

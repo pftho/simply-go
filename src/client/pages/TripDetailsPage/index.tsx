@@ -7,13 +7,13 @@ import { useTripQuery } from "../../services/trips/actions";
 import "./styles.scss";
 import TripDetailsPageSider from "./TripDetailsPageSider";
 
-const { Content } = Layout;
-const { Title } = Typography;
-
 function TripDetailsPage() {
   const { id } = useParams();
   const { data: trip, isLoading } = useTripQuery(id);
   const { user } = useAuth();
+
+  const { Content } = Layout;
+  const { Title } = Typography;
 
   const imageUrl =
     trip?.imageUrl ||
