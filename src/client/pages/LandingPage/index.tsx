@@ -24,11 +24,13 @@ function LandingPage() {
         title={"Welcome to Simply Go"}
         tagline={"Leave your travel plan to us, and just relax and unwind."}
       />
+
       <FeaturesSection />
 
       <Title className="tripListTitle headerLevel2" level={2}>
         Here are some examples
       </Title>
+
       <TripList trips={trips} />
     </>
   );
