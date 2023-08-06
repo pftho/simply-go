@@ -1,4 +1,4 @@
-import { Spin } from "antd";
+import { Empty, Spin } from "antd";
 import { useEffect, useState } from "react";
 import CoverImage from "../../components/organisms/CoverImage";
 import TripList from "../../components/organisms/TripList";
@@ -31,13 +31,15 @@ function HomePage() {
   return (
     <>
       <CoverImage imageUrl={imageUrl} title={"Explore"} />
-      {trips?.length && (
+      {trips?.length ? (
         <div className="searchBarAndListContainer">
           <SearchBar setTripsToDisplay={setTripsToDisplay} trips={trips} />
           <div className="tripListDiv">
             {tripsTodisplay && <TripList trips={tripsTodisplay} />}
           </div>
         </div>
+      ) : (
+        <Empty />
       )}
     </>
   );
