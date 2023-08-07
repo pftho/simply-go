@@ -68,7 +68,6 @@ function LoginPage() {
             >
               <Input.Password />
             </Form.Item>
-
             <Form.Item wrapperCol={{ span: 16 }}>
               <Button type="primary" htmlType="submit" loading={loading}>
                 Login
