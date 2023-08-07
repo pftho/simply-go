@@ -28,6 +28,7 @@ function HomePage() {
     );
   }
 
+  // TODO Center empty
   return (
     <>
       <CoverImage imageUrl={imageUrl} title={"Explore"} />
@@ -39,7 +40,9 @@ function HomePage() {
           </div>
         </div>
       ) : (
-        <Empty />
+        <div>
+          <Empty className="searchBarAndListContainer" />
+        </div>
       )}
     </>
   );
