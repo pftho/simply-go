@@ -1,55 +1,63 @@
-import {
-  CarryOutOutlined,
-  PlusOutlined,
-  SearchOutlined,
-} from "@ant-design/icons";
+import { PlusOutlined, SearchOutlined, SmileOutlined } from "@ant-design/icons";
 import { Card, Col, Row, Typography } from "antd";
 import "./styles.css";
 
 const FeaturesSection = () => {
-  const { Title } = Typography;
+  const { Title, Text } = Typography;
 
   return (
     <div className="FeatureSectionContainer">
-      <Title className="FeatureSectionTitle headerLevel2" level={2}>
+      <Title className="FeatureSectionTitle headerLevel2" level={1}>
         What we offer
       </Title>
       <Row gutter={[16, 16]} justify="center" align="middle">
         <Col xs={24} sm={12} md={8}>
           <Card
             className="featureCard"
-            title="Create"
+            title={
+              <Title className="headerLevel3" level={3}>
+                Create
+              </Title>
+            }
             cover={<PlusOutlined className="featureIcon" />}
           >
-            <Typography>
+            <Text className="featurePresentationText">
               Easily create and plan your own trips with our user-friendly
               interface.
-            </Typography>
+            </Text>
           </Card>
         </Col>
 
         <Col xs={24} sm={12} md={8}>
           <Card
-            title="Get inspired"
+            title={
+              <Title className="headerLevel3" level={3}>
+                Get inspired
+              </Title>
+            }
             className="featureCard"
             cover={<SearchOutlined className="featureIcon" />}
           >
-            <Typography>
+            <Text className="featurePresentationText">
               Explore a wide range of pre-planned trips created by other users.
-            </Typography>
+            </Text>
           </Card>
         </Col>
 
         <Col xs={24} sm={12} md={8}>
           <Card
             className="featureCard"
-            title="Enjoy"
-            cover={<CarryOutOutlined className="featureIcon" />}
+            title={
+              <Title className="headerLevel3" level={3}>
+                Enjoy
+              </Title>
+            }
+            cover={<SmileOutlined className="featureIcon" />}
           >
-            <Typography>
+            <Text className="featurePresentationText">
               Access your trip plans on-the-go, ensuring a smooth and enjoyable
               journey.
-            </Typography>
+            </Text>
           </Card>
         </Col>
       </Row>

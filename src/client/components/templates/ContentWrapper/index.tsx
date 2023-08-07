@@ -83,7 +83,7 @@ const ContentWrapper = ({ children }: { children: JSX.Element }) => {
         </Menu>
       </Header>
       <Content>{children}</Content>
-      <Footer>Pauline Thomas ©2023</Footer>
+      <Footer className="footer">Pauline Thomas ©2023</Footer>
     </Layout>
   );
 };

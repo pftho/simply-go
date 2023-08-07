@@ -29,7 +29,7 @@ function LandingPage() {
 
       <FeaturesSection />
 
-      <Title className="tripListTitle headerLevel2" level={2}>
+      <Title className="tripListTitle headerLevel2" level={1}>
         Here are some examples
       </Title>
 

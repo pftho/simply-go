@@ -26,7 +26,11 @@ function TripCard({
       onClick={handleClick}
       hoverable
       className="tripCard"
-      cover={<img src={tripImage || defaultImage} />}
+      cover={
+        <div className="tripImageContainer">
+          <img src={tripImage || defaultImage} className="tripCoverImage" />
+        </div>
+      }
     >
       <Meta title={tripName} description={tripHolidayTimeframe} />
     </Card>
