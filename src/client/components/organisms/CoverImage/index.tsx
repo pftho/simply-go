@@ -10,7 +10,7 @@ function CoverImage({
   title: string;
   tagline?: string;
 }) {
-  const { Title } = Typography;
+  const { Title, Text } = Typography;
 
   return (
     <div
@@ -20,14 +20,14 @@ function CoverImage({
       }}
     >
       <div className="coverText">
-        <Title level={1} className="headerLevel1 ">
+        <Title level={1} className="headerLevel1" style={{ marginBottom: 0 }}>
           {title}
-          {tagline && (
-            <Title className="headerLevel2" level={2}>
-              {tagline}
-            </Title>
-          )}
         </Title>
+        {tagline && (
+          <Title className="headerLevel2" level={2}>
+            {tagline}
+          </Title>
+        )}
       </div>
     </div>
   );

@@ -59,7 +59,7 @@ const CreateEditTripForm = ({ edit }: { edit: boolean }) => {
       <Form.Item label="Image URL">
         <Input
           placeholder="Enter the image URL"
-          value={storedImageUrl}
+          value={storedImageUrl || trip?.imageUrl}
           onChange={handleImageUrlChange}
           allowClear
         />

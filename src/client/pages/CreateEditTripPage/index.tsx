@@ -14,7 +14,7 @@ function CreateEditTripPage({ edit }: { edit: boolean }) {
 
       <div className="createTripFormContainer">
         <Title className="headerLevel2" level={2}>
-          New trip
+          {edit ? "Edit trip" : "New trip"}
         </Title>
         <CreateEditTripForm edit={edit} />
       </div>
