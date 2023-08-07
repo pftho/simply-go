@@ -1,6 +1,6 @@
 import { Col, Empty, Layout, Row, Spin, Typography } from "antd";
 import { useParams } from "react-router-dom";
-import ActivityCard from "../../components/organisms/ActivityCard";
+import ActivityCard from "./ActivityCard";
 import CoverImage from "../../components/organisms/CoverImage";
 import { useAuth } from "../../context/auth.context";
 import { useTripQuery } from "../../services/trips/actions";
