@@ -1,6 +1,5 @@
 import express from "express";
 import mongoose from "mongoose";
-import fileUploader from "../config/cloudinary.config";
 import {
   AuthenticatedRequest,
   isAuthenticated,
