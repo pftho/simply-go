@@ -28,7 +28,6 @@ function HomePage() {
     );
   }
 
-  // TODO Center empty
   return (
     <>
       <CoverImage imageUrl={imageUrl} title={"Explore"} />
