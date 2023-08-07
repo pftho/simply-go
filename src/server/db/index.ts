@@ -7,8 +7,6 @@ import mongoose from "mongoose";
 
 const MONGO_URI = process.env.MONGODB_URI || "mongodb://localhost/simply-go";
 
-console.log(MONGO_URI);
-
 mongoose
   .connect(MONGO_URI)
   .then((x) => {

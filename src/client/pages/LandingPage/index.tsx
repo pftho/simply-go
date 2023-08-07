@@ -24,7 +24,7 @@ function LandingPage() {
       <CoverImage
         imageUrl={imageUrl}
         title={"Welcome to Simply Go"}
-        tagline={"Leave your travel plan to us, and just relax and unwind."}
+        tagline={"Leave your travel plan to us and just relax."}
       />
 
       <FeaturesSection />
