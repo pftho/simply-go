@@ -18,7 +18,11 @@ const CreateEditTripForm = ({ edit }: { edit: boolean }) => {
   const [storedImageUrl, setStoredImageUrl] = useState("");
 
   if (!user) {
-    return <Spin />;
+    return (
+      <div className="spinDiv">
+        <Spin />
+      </div>
+    );
   }
 
   const { onFinish } = useTripForm();

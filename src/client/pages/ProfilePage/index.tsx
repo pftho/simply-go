@@ -22,7 +22,11 @@ function ProfilePage() {
   const userTrips = trips?.filter((trip) => trip?.owner?._id === user?._id);
 
   if (isLoading) {
-    return <Spin />;
+    return (
+      <div className="spinDiv">
+        <Spin />
+      </div>
+    );
   }
 
   return (

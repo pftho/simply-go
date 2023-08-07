@@ -5,7 +5,12 @@ import { useAuth } from "../../context/auth.context";
 function IsPrivate({ children }: { children: JSX.Element }) {
   const { isLoggedIn, isLoading } = useAuth();
 
-  if (isLoading) return <Spin />;
+  if (isLoading)
+    return (
+      <div className="spinDiv">
+        <Spin />
+      </div>
+    );
 
   if (!isLoggedIn) {
     return <Navigate to="/page-not-found" />;

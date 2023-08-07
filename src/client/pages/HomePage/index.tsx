@@ -23,7 +23,9 @@ function HomePage() {
     return (
       <>
         <CoverImage imageUrl={imageUrl} title={"Explore"} />
-        <Spin />
+        <div className="spinDiv">
+          <Spin />
+        </div>
       </>
     );
   }

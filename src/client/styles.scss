@@ -39,4 +39,10 @@ body {
     font-family: "Lobster";
     color: var(--color-sunset-orange);
   }
+
+  .spinDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
