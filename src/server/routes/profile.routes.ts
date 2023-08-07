@@ -30,24 +30,6 @@ router.get("/user/:userId", async (req, res, next) => {
 });
 
 /**
- * @store
- * @summary a user profile picture
- */
-
-router.post(
-  "/upload",
-  isAuthenticated,
-  fileUploader.single("imageUrl"),
-  (req, res, next) => {
-    if (!req.file) {
-      next(new Error("No file uploaded!"));
-      return;
-    }
-    res.json({ fileUrl: req.file.path });
-  }
-);
-
-/**
  * @update
  * @summary a specific user
  * @requestBody userId: string
