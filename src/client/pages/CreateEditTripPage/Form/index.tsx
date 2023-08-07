@@ -6,13 +6,12 @@ import { useAuth } from "../../../context/auth.context";
 import { useTripQuery } from "../../../services/trips/actions";
 import { HolidayTimeframeEnum } from "../../../types/trip/enums";
 import { TripCreationUpdateRequest } from "../../../types/trip/types";
+import FormActivityRow from "../FormActivityRow";
 import "./styles.scss";
 import { useTripForm } from "./useTripForm";
-import FormActivityRow from "../FormActivityRow";
 
 const CreateEditTripForm = ({ edit }: { edit: boolean }) => {
   const { Option } = Select;
-
   const { id } = useParams();
   const { data: trip } = useTripQuery(id, { enabled: edit });
   const { user } = useAuth();

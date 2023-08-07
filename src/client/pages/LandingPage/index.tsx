@@ -1,11 +1,9 @@
-import { Col, Row, Spin, Typography } from "antd";
+import { Spin, Typography } from "antd";
 import CoverImage from "../../components/organisms/CoverImage";
-import TripCard from "../../components/organisms/TripCard";
-import { useTripsQuery } from "../../services/trips/actions";
-import { Trip } from "../../types/trip/types";
-import "./styles.css";
-import FeaturesSection from "./LandingPageFeaturesSection";
 import TripList from "../../components/organisms/TripList";
+import { useTripsQuery } from "../../services/trips/actions";
+import FeaturesSection from "./LandingPageFeaturesSection";
+import "./styles.css";
 
 function LandingPage() {
   const { data: trips, isLoading } = useTripsQuery();

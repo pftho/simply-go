@@ -1,12 +1,12 @@
 import express from "express";
 import mongoose from "mongoose";
-import User from "../models/User.model";
+import fileUploader from "../config/cloudinary.config";
 import {
   AuthenticatedRequest,
   isAuthenticated,
 } from "../middleware/jwt.middleware";
-import fileUploader from "../config/cloudinary.config";
 import Trip from "../models/Trip.model";
+import User from "../models/User.model";
 
 const router = express.Router();
 
@@ -79,9 +79,9 @@ router.put("/:userId", isAuthenticated, async (req, res) => {
 
 /**
  * @delete
- * @summary delete a trip
- * @requestBody tripId: string
- * @responseBody 200 - <Trip>
+ * @summary delete a user
+ * @requestBody userId: string
+ * @responseBody 200 - message
  */
 router.delete("/:userId", isAuthenticated, async (req, res, next) => {
   const { userId } = req.params;

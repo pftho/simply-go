@@ -1,8 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { useAuth } from "../../context/auth.context";
-import { Trip, TripCreationUpdateRequest } from "../../types/trip/types";
-import api from "../actions";
 import { EditUseRequest, User } from "../../types/user/types";
+import api from "../actions";
 
 export const useUpdateUserMutation = () => {
   const { getToken } = useAuth();

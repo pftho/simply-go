@@ -1,11 +1,11 @@
 import { Col, Empty, Layout, Row, Spin, Typography } from "antd";
 import { useParams } from "react-router-dom";
-import ActivityCard from "./ActivityCard";
 import CoverImage from "../../components/organisms/CoverImage";
 import { useAuth } from "../../context/auth.context";
 import { useTripQuery } from "../../services/trips/actions";
-import "./styles.scss";
+import ActivityCard from "./ActivityCard";
 import TripDetailsPageSider from "./TripDetailsPageSider";
+import "./styles.scss";
 
 function TripDetailsPage() {
   const { id } = useParams();

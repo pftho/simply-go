@@ -1,7 +1,7 @@
-import { Result, Button } from "antd";
+import { Button, Result } from "antd";
 import { Link } from "react-router-dom";
-import "./../style.css";
 import { useAuth } from "../../../context/auth.context";
+import "./../style.css";
 
 const ErrorPage = () => {
   const { isLoggedIn } = useAuth();

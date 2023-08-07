@@ -7,7 +7,6 @@ import {
 import { Trip, TripCreationUpdateRequest } from "../../../types/trip/types";
 import { User } from "../../../types/user/types";
 
-// Custom hook
 export const useTripForm = () => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();

@@ -81,7 +81,7 @@ router.post("/register", async (req, res, next) => {
 /**
  * @store
  * @summary post route for user to login
- * @responseBody 200 - <User>
+ * @responseBody 200 -AuthToken
  */
 
 router.post("/login", async (req, res, next) => {
@@ -131,7 +131,7 @@ router.post("/login", async (req, res, next) => {
 /**
  * @show
  * @summary get user token
- * @responseBody 200 - <token>
+ * @responseBody 200 - userAuth data
  */
 
 router.get("/verify", isAuthenticated, (req, res) => {

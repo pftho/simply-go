@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import CoverImage from "../../components/organisms/CoverImage";
 import TripList from "../../components/organisms/TripList";
 import { useTripsQuery } from "../../services/trips/actions";
+import { Trip } from "../../types/trip/types";
 import SearchBar from "./SearchBar";
 import "./styles.css";
-import { Trip } from "../../types/trip/types";
 
 function HomePage() {
   const { data: trips, isLoading } = useTripsQuery();

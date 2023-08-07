@@ -1,4 +1,4 @@
-import { Col, Empty, Row, Typography } from "antd";
+import { Col, Empty, Row } from "antd";
 import { Trip } from "../../../types/trip/types";
 import TripCard from "../TripCard";
 import "./styles.css";

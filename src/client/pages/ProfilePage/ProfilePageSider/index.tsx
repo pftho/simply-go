@@ -1,11 +1,11 @@
-import { Anchor, Button, Layout, Typography, message } from "antd";
+import { Anchor, Button, message } from "antd";
 import Sider from "antd/es/layout/Sider";
-import "./style.scss";
-import { useDeleteUserMutation } from "../../../services/users/actions";
-import { useAuth } from "../../../context/auth.context";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ConfirmationModal from "../../../components/organisms/ConfirmModal";
-import { useState } from "react";
+import { useAuth } from "../../../context/auth.context";
+import { useDeleteUserMutation } from "../../../services/users/actions";
+import "./style.scss";
 
 function ProfilePageSider({
   setEditingProfile,

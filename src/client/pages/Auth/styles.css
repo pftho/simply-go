@@ -15,7 +15,7 @@
 }
 
 .errorMessage {
-  color: brown;
+  color: var(--color-earthy-brown);
   font-weight: bold;
   margin-bottom: 5px;
 }

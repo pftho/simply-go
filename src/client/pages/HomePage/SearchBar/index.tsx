@@ -51,7 +51,7 @@ const SearchBar = ({
   return (
     <div className="searchBar">
       <Select
-        style={{ width: 200, marginRight: 16 }}
+        className="searchBarSelect"
         placeholder="Select location"
         onChange={handleLocationChange}
         allowClear
@@ -63,7 +63,7 @@ const SearchBar = ({
         ))}
       </Select>
       <Select
-        style={{ width: 200, marginRight: 16 }}
+        className="searchBarSelect"
         placeholder="Select budget"
         onChange={handleBudgetChange}
         allowClear
@@ -76,7 +76,7 @@ const SearchBar = ({
       </Select>
 
       <Select
-        style={{ width: 150, marginRight: 16 }}
+        className="searchBarSelect"
         onChange={handleDateChange}
         placeholder="Select period"
         allowClear

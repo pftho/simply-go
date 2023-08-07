@@ -8,7 +8,6 @@ import Activity from "../models/Activity.model";
 import Trip from "../models/Trip.model";
 import User from "../models/User.model";
 import { isTripOwner } from "../services";
-import { Activity as ActivityType } from "../../client/types/activity/types";
 
 const router = express.Router();
 
@@ -68,7 +67,7 @@ router.get("/:tripId", async (req, res) => {
 /**
  * @store
  * @summary post route to create a trip
- * @responseBody 200 - <Trip>
+ * @responseBody 200 - <Trip> & message
  */
 
 router.post("/", isAuthenticated, async (req, res) => {
@@ -137,7 +136,7 @@ router.post("/", isAuthenticated, async (req, res) => {
  * @update
  * @summary put route to update a trip
  * @requestBody tripId: string
- * @responseBody 200 - <Trip>
+ * @responseBody 200 - <Trip> & message
  */
 
 router.put("/:tripId", isAuthenticated, async (req, res, next) => {
@@ -205,7 +204,7 @@ router.put("/:tripId", isAuthenticated, async (req, res, next) => {
  * @delete
  * @summary delete a trip
  * @requestBody tripId: string
- * @responseBody 200 - <Trip>
+ * @responseBody 200 - message
  */
 
 router.delete("/:tripId", isAuthenticated, async (req, res) => {

@@ -8,8 +8,8 @@ import {
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../../../context/auth.context";
 import logo from "../../../assets/simply-go-logo.png";
+import { useAuth } from "../../../context/auth.context";
 import "./styles.scss";
 
 const { Header, Content, Footer } = Layout;
